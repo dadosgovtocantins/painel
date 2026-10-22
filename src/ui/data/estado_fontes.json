@@ -1,6 +1,6 @@
 {
   "versao": 1,
-  "ultima_execucao_orquestrador": "2026-10-22T03:19:32Z",
+  "ultima_execucao_orquestrador": "2026-10-22T17:23:26Z",
   "fontes": {
     "TO-TER-01": {
       "ultimo_periodo_coletado": "2026",
@@ -8,9 +8,9 @@
       "verificado_em": "2026-10-22T03:19:32Z",
       "coletado_em": "2026-10-21T12:01:39Z",
       "confirmado_em": "2026-10-22T03:19:32Z",
-      "status": "ok",
-      "falhas_consecutivas": 0,
-      "mensagem_erro": null,
+      "status": "erro",
+      "falhas_consecutivas": 1,
+      "mensagem_erro": "SentinelaError: TO-TER-01: sentinela falhou: MaxRetryError: HTTPSConnectionPool(host='servicodados.ibge.gov.br', port=443): Max retries exceeded with url: /api/v3/agregados/6579/periodos (Caused by ConnectTimeoutError(<HTTPSConnection(host='servicodados.ibge.gov.br', port=443) at 0x7f9044eb8b10>, 'C",
       "proxima_divulgacao": null
     },
     "TO-TER-02": {
@@ -19,9 +19,9 @@
       "verificado_em": "2026-10-22T03:19:32Z",
       "coletado_em": "2026-10-21T12:01:39Z",
       "confirmado_em": "2026-10-22T03:19:32Z",
-      "status": "ok",
-      "falhas_consecutivas": 0,
-      "mensagem_erro": null,
+      "status": "erro",
+      "falhas_consecutivas": 1,
+      "mensagem_erro": "SentinelaError: TO-TER-02: sentinela falhou: MaxRetryError: HTTPSConnectionPool(host='servicodados.ibge.gov.br', port=443): Max retries exceeded with url: /api/v3/agregados/5938/periodos (Caused by ConnectTimeoutError(<HTTPSConnection(host='servicodados.ibge.gov.br', port=443) at 0x7f9044eba010>, 'C",
       "proxima_divulgacao": null
     },
     "TO-TER-03": {
@@ -30,9 +30,9 @@
       "verificado_em": "2026-10-22T03:19:32Z",
       "coletado_em": "2026-10-21T12:01:39Z",
       "confirmado_em": "2026-10-22T03:19:32Z",
-      "status": "ok",
-      "falhas_consecutivas": 0,
-      "mensagem_erro": null,
+      "status": "erro",
+      "falhas_consecutivas": 1,
+      "mensagem_erro": "SentinelaError: TO-TER-03: sentinela falhou: MaxRetryError: HTTPSConnectionPool(host='servicodados.ibge.gov.br', port=443): Max retries exceeded with url: /api/v3/agregados/5938/periodos (Caused by ConnectTimeoutError(<HTTPSConnection(host='servicodados.ibge.gov.br', port=443) at 0x7f9044ebb750>, 'C",
       "proxima_divulgacao": null
     },
     "TO-TER-04": {
@@ -41,9 +41,9 @@
       "verificado_em": "2026-10-22T03:19:32Z",
       "coletado_em": "2026-10-21T12:01:39Z",
       "confirmado_em": "2026-10-22T03:19:32Z",
-      "status": "ok",
-      "falhas_consecutivas": 0,
-      "mensagem_erro": null,
+      "status": "erro",
+      "falhas_consecutivas": 1,
+      "mensagem_erro": "SentinelaError: TO-TER-04: sentinela falhou: MaxRetryError: HTTPSConnectionPool(host='servicodados.ibge.gov.br', port=443): Max retries exceeded with url: /api/v3/agregados/4714/periodos (Caused by ConnectTimeoutError(<HTTPSConnection(host='servicodados.ibge.gov.br', port=443) at 0x7f9044ed8e90>, 'C",
       "proxima_divulgacao": null
     },
     "TO-TER-05": {
@@ -52,9 +52,9 @@
       "verificado_em": "2026-10-22T03:19:32Z",
       "coletado_em": "2026-10-21T12:01:39Z",
       "confirmado_em": "2026-10-22T03:19:32Z",
-      "status": "ok",
-      "falhas_consecutivas": 0,
-      "mensagem_erro": null,
+      "status": "erro",
+      "falhas_consecutivas": 1,
+      "mensagem_erro": "SentinelaError: TO-TER-05: sentinela falhou: MaxRetryError: HTTPSConnectionPool(host='servicodados.ibge.gov.br', port=443): Max retries exceeded with url: /api/v3/agregados/5457/periodos (Caused by ConnectTimeoutError(<HTTPSConnection(host='servicodados.ibge.gov.br', port=443) at 0x7f9044eda590>, 'C",
       "proxima_divulgacao": null
     },
     "TO-TER-06": {
@@ -63,9 +63,9 @@
       "verificado_em": "2026-10-22T03:19:32Z",
       "coletado_em": "2026-10-21T12:01:39Z",
       "confirmado_em": "2026-10-22T03:19:32Z",
-      "status": "ok",
-      "falhas_consecutivas": 0,
-      "mensagem_erro": null,
+      "status": "erro",
+      "falhas_consecutivas": 1,
+      "mensagem_erro": "SentinelaError: TO-TER-06: sentinela falhou: MaxRetryError: HTTPSConnectionPool(host='servicodados.ibge.gov.br', port=443): Max retries exceeded with url: /api/v3/agregados/3939/periodos (Caused by ConnectTimeoutError(<HTTPSConnection(host='servicodados.ibge.gov.br', port=443) at 0x7f9044ebbc50>, 'C",
       "proxima_divulgacao": null
     },
     "TO-TER-07": {
@@ -74,17 +74,17 @@
       "verificado_em": "2026-10-22T03:19:32Z",
       "coletado_em": "2026-10-21T12:01:39Z",
       "confirmado_em": "2026-10-22T03:19:32Z",
-      "status": "ok",
-      "falhas_consecutivas": 0,
-      "mensagem_erro": null,
+      "status": "erro",
+      "falhas_consecutivas": 1,
+      "mensagem_erro": "SentinelaError: TO-TER-07: sentinela falhou: MaxRetryError: HTTPSConnectionPool(host='servicodados.ibge.gov.br', port=443): Max retries exceeded with url: /api/v3/agregados/4099/periodos (Caused by ConnectTimeoutError(<HTTPSConnection(host='servicodados.ibge.gov.br', port=443) at 0x7f9044eba7d0>, 'C",
       "proxima_divulgacao": "2026-11-18"
     },
     "TO-REC-02": {
       "ultimo_periodo_coletado": "2025",
       "marca_sentinela": "2026-02-25|57",
-      "verificado_em": "2026-10-22T03:19:32Z",
+      "verificado_em": "2026-10-22T17:23:26Z",
       "coletado_em": "2026-10-21T12:01:39Z",
-      "confirmado_em": "2026-10-22T03:19:32Z",
+      "confirmado_em": "2026-10-22T17:23:26Z",
       "status": "ok",
       "falhas_consecutivas": 0,
       "mensagem_erro": null,
@@ -93,9 +93,9 @@
     "TO-GER-01": {
       "ultimo_periodo_coletado": "2024",
       "marca_sentinela": "GOVERNADOR=2022|PREFEITO=2024",
-      "verificado_em": "2026-10-22T03:19:32Z",
+      "verificado_em": "2026-10-22T17:23:26Z",
       "coletado_em": "2026-10-21T12:01:39Z",
-      "confirmado_em": "2026-10-22T03:19:32Z",
+      "confirmado_em": "2026-10-22T17:23:26Z",
       "status": "ok",
       "falhas_consecutivas": 0,
       "mensagem_erro": null,
