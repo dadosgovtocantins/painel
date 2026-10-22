@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- CSP por meta (o GitHub Pages não deixa configurar cabeçalhos): só o próprio site. 'unsafe-eval' é do runtime
+       x-dc, que monta o componente a partir do <script type="text/plain">; sem script nem estilo de terceiros. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'">
+  <title>Painel TO em Dados</title>
+  <!-- ?v= = início do SHA-256 do arquivo (evita .js/.css velho no cache); tests/ui/test_tela_municipio.py confere (painel-logica.js, painel.css e support.js) -->
+  <script src="./src/ui/painel-logica.js?v=28cd9109"></script>
+  <script src="./support.js?v=a1d293c3"></script>
+</head>
+<body>
+<x-dc>
+  <sc-helmet>
+    <link rel="stylesheet" href="./src/ui/vendor/inter/fonts.css">
+    <link rel="stylesheet" href="./src/ui/vendor/phosphor/style.css">
+    <link rel="stylesheet" href="./src/ui/css/painel.css?v=584b5dd1">
+  </sc-helmet>
+
+  <div class="painel" data-visao="{{ aba }}" data-tema="{{ tema }}" data-densidade="{{ densidade }}">
+    <div class="interno">
+      <nav class="topo" aria-label="Visões do painel">
+        <p class="marca">Painel TO em Dados<span>Pesquisa Unitins · PIBIEX</span></p>
+        <div class="abas" role="tablist" aria-label="Visões do painel">
+          <sc-for list="{{ abas }}" as="a">
+            <button type="button" class="aba" role="tab" id="aba-{{ a.id }}" aria-selected="{{ a.ativa }}" aria-controls="conteudo" tabIndex="{{ a.tab }}" data-aba="{{ a.id }}" onclick="{{ aoAba }}" onkeydown="{{ aoTeclarAba }}"><i class="ph {{ a.icone }}" aria-hidden="true"></i><span class="rot-longo">{{ a.rotulo }}</span><span class="rot-curto">{{ a.curto }}</span></button>
+          </sc-for>
+        </div>
+        <div class="tema" role="group" aria-label="Tema de cores">
+          <sc-for list="{{ temas }}" as="t">
+            <button type="button" class="tema-op" aria-pressed="{{ t.ativo }}" data-tema="{{ t.id }}" onclick="{{ aoTema }}"><i class="ph {{ t.icone }}" aria-hidden="true"></i><span class="tema-rot">{{ t.rotulo }}</span></button>
+          </sc-for>
+        </div>
+      </nav>
+
+      <div id="conteudo" role="tabpanel" aria-labelledby="aba-{{ aba }}">
+        <header class="cabecalho">
+          <sc-if value="{{ visaoMunicipio }}">
+            <label class="campo">Município
+              <select class="seletor" value="{{ cod }}" onchange="{{ aoMudarMunicipio }}">
+                <sc-for list="{{ opcoesMunicipio }}" as="o"><option value="{{ o.cod }}" label="{{ o.rotulo }}"></option></sc-for>
+              </select>
+            </label>
+          </sc-if>
+          <sc-if value="{{ visaoOrgao }}">
+            <label class="campo">Órgão
+              <select class="seletor" value="{{ orgao.sigla }}" onchange="{{ aoMudarOrgao }}">
+                <sc-for list="{{ opcoesOrgao }}" as="o"><option value="{{ o.sigla }}" label="{{ o.rotulo }}"></option></sc-for>
+              </select>
+            </label>
+          </sc-if>
+
+          <sc-if value="{{ temRetratos }}">
+            <div class="z-ret">
+              <figure class="retrato">
+                <sc-if value="{{ ret.temFoto }}"><div class="midia" role="img" aria-label="Foto de {{ ret.pessoa }}" style="background-image:url('{{ ret.foto }}')"></div></sc-if>
+                <sc-if value="{{ ret.semFoto }}"><div class="vazio"><i class="ph ph-user" aria-hidden="true"></i><span>Foto do(a)<br>{{ ret.funcao }}</span></div></sc-if>
+              </figure>
+              <sc-if value="{{ mostrarBandeira }}">
+                <figure class="retrato">
+                  <sc-if value="{{ ret.temBandeira }}"><div class="midia midia-contain" role="img" aria-label="Bandeira de {{ ret.lugar }}" style="background-image:url('{{ ret.bandeira }}')"></div></sc-if>
+                  <sc-if value="{{ ret.semBandeira }}"><div class="vazio"><i class="ph ph-flag" aria-hidden="true"></i><span>Bandeira</span></div></sc-if>
+                </figure>
+              </sc-if>
+            </div>
+          </sc-if>
+
+          <div class="z-id">
+            <h1 class="cidade">{{ cab.titulo }}</h1>
+            <p class="prefeito {{ cab.subClasse }}">{{ cab.subtitulo }}<span class="pop-fonte">{{ cab.legenda }}</span></p>
+            <span class="tag">{{ cab.tag }}</span>
+            <sc-if value="{{ cab.desc }}"><p class="desc">{{ cab.desc }}</p></sc-if>
+          </div>
+
+          <sc-if value="{{ temMapa }}">
+            <div class="z-mapa">
+              <div class="pop">
+                <span class="pop-num">{{ cab.popFmt }}</span>
+                <span class="pop-rot">habitantes</span>
+                <span class="pop-fonte">IBGE · Censo 2022</span>
+              </div>
+              <div class="mapa" data-visao="{{ aba }}">
+                <sc-if value="{{ mapaCarregando }}"><div class="mapa-msg">Carregando mapa…</div></sc-if>
+                <sc-if value="{{ mapaErro }}"><div class="mapa-msg" role="alert">{{ mapaErro }}</div></sc-if>
+                <svg viewBox="0 0 360 592" aria-hidden="{{ mapaOculto }}">
+                  <g role="radiogroup" aria-label="Municípios do Tocantins. Use as setas para trocar de município.">
+                    <sc-for list="{{ municipios }}" as="m">
+                      <path class="mun" d="{{ m.d }}" role="radio" aria-checked="{{ m.sel }}" aria-label="{{ m.nome }}" tabIndex="{{ m.tab }}" data-cod="{{ m.cod }}" onclick="{{ aoClicar }}" onkeydown="{{ aoTeclar }}"><title>{{ m.nome }}</title></path>
+                    </sc-for>
+                  </g>
+                  <path class="destaque" d="{{ destaqueD }}"></path>
+                </svg>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ visaoOrgao }}">
+            <div class="z-mapa">
+              <div class="mat">
+                <span class="mat-rot">Maturidade de dados abertos</span>
+                <span class="pop-num">{{ orgao.pct }}%</span>
+                <span class="medidor" role="meter" aria-label="Maturidade de dados abertos" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ orgao.pct }}"><span style="transform:scaleX({{ orgao.frac }})"></span></span>
+                <span class="tag">{{ orgao.nivel }}</span>
+                <span class="pop-fonte">{{ orgao.fontes }}</span>
+              </div>
+            </div>
+          </sc-if>
+        </header>
+
+        <div class="hr" role="presentation"></div>
+
+        <main>
+          <div class="corpo-topo">
+            <h2>{{ tituloCorpo }}</h2>
+            <sc-if value="{{ avisoDados }}"><span class="tag">{{ avisoDados }}</span></sc-if>
+          </div>
+          <div class="grade">
+            <sc-for list="{{ cartoes }}" as="c">
+              <article class="cartao">
+                <sc-if value="{{ c.cat }}"><p class="c-cat"><i class="ph {{ c.catIcone }}" aria-hidden="true"></i>{{ c.cat }}</p></sc-if>
+                <h3 class="c-tit">{{ c.titulo }}</h3>
+                <p class="c-val"><span class="num {{ c.numClasse }}">{{ c.valorFmt }}</span><span class="uni">{{ c.unidade }}</span></p>
+                <sc-if value="{{ c.temVar }}"><p class="c-linha"><span class="var" data-aval="{{ c.aval }}"><i class="ph {{ c.seta }}" aria-hidden="true"></i>{{ c.varFmt }} <span class="vs">{{ c.vs }}</span><span class="sr">{{ c.leitura }}</span></span></p></sc-if>
+                <sc-if value="{{ c.temSerie }}"><svg class="spark" viewBox="0 0 72 24" preserveAspectRatio="none" aria-hidden="true"><polyline points="{{ c.pts }}"></polyline><path class="ponto" d="M{{ c.ux }},{{ c.uy }}h0"></path></svg></sc-if>
+                <p class="c-fonte">{{ c.fonteFmt }}</p>
+              </article>
+            </sc-for>
+          </div>
+          <sc-if value="{{ temCategorias }}">
+            <nav class="categorias" aria-label="Categorias de indicadores">
+              <span class="cat-rot">Ver outras categorias</span>
+              <sc-for list="{{ grupos }}" as="g">
+                <div class="cat-grupo" data-ativo="{{ g.ativo }}">
+                  <sc-for list="{{ g.itens }}" as="k">
+                    <button type="button" class="cat" aria-current="{{ k.atual }}" data-tela="{{ k.tela }}" onclick="{{ aoCategoria }}"><i class="ph {{ k.icone }}" aria-hidden="true"></i>{{ k.nome }}</button>
+                  </sc-for>
+                </div>
+              </sc-for>
+            </nav>
+          </sc-if>
+          <p class="sr" aria-live="polite">{{ telaAnuncio }}</p>
+        </main>
+      </div>
+
+      <footer class="rodape">
+        <sc-if value="{{ situacao }}">
+          <details class="fontes">
+            <summary><i class="ph ph-clock" aria-hidden="true"></i><span>Última verificação das fontes: {{ situacao.verificado }} (horário de Brasília) · {{ situacao.resumo }}</span></summary>
+            <ul class="fontes-lista">
+              <sc-for list="{{ situacao.itens }}" as="f">
+                <li class="fonte">
+                  <span class="fonte-nome">{{ f.nome }}<span class="fonte-orgao">{{ f.orgao }}</span></span>
+                  <span class="fonte-status" data-status="{{ f.status }}"><i class="ph {{ f.icone }}" aria-hidden="true"></i>{{ f.statusRotulo }}</span>
+                  <span class="fonte-periodo">Dado de {{ f.periodo }}</span>
+                  <sc-if value="{{ f.temMensagem }}"><span class="fonte-msg">{{ f.mensagem }}</span></sc-if>
+                </li>
+              </sc-for>
+            </ul>
+          </details>
+        </sc-if>
+        <sc-if value="{{ situacaoIndisponivel }}"><p>Situação das fontes indisponível no momento.</p></sc-if>
+        <p>Projeto acadêmico independente de pesquisa e extensão (Unitins/PIBIEX), sem vínculo com o Governo do Estado do Tocantins. População: IBGE, Censo Demográfico 2022. Os indicadores vêm direto do IBGE e do Tesouro Nacional; “Não coletado” indica que a coleta automática ainda não existe. {{ rodapeDados }}</p>
+        <p>Os nomes de prefeitos e do governador vêm da base pública oficial do Tribunal Superior Eleitoral (TSE) e se referem exclusivamente a ocupantes de cargos públicos eletivos, divulgados nos termos da Lei de Acesso à Informação (Lei nº 12.527/2011).</p>
+      </footer>
+    </div>
+  </div>
+</x-dc>
+
+<script type="text/plain" data-dc-script data-props='{
+  "visao": { "default": "municipio", "type": "enum", "options": ["municipio", "estado", "orgao"] },
+  "municipio": { "default": "Palmas", "type": "string", "description": "Nome ou código IBGE do município" },
+  "mostrarBandeira": { "default": true, "type": "boolean" },
+  "densidade": { "default": "compacta", "type": "enum", "options": ["compacta", "confortavel"] },
+  "tema": { "default": "escuro", "type": "enum", "options": ["escuro", "claro"] }
+}'>
+class Component extends DCLogic {
+  // Exceções por município (foto, bandeira); o resto vem do Censo 2022 e de bandeiras/. Nomes dos titulares: painel_dados.json (TSE).
+  static MUNICIPIOS = {
+    "1706001": { bandeira: "./bandeiras/couto-de-magalhaes-to.webp" },
+  };
+
+  static ESTADO = { nome: "Tocantins", cargo: "Governador(a) do Tocantins", foto: "", bandeira: "./bandeiras/estado-tocantins.webp" };
+
+  // Fonte: IBGE/SIDRA tabela 4709 (População residente, Censo 2022) — código: [nome, população].
+  static CENSO_2022 = {"1700251":["Abreulândia",2576],"1700301":["Aguiarnópolis",4497],"1700350":["Aliança do Tocantins",5147],"1700400":["Almas",6499],"1700707":["Alvorada",8802],"1701002":["Ananás",10325],"1701051":["Angico",2876],"1701101":["Aparecida do Rio Negro",4856],"1701309":["Aragominas",5290],"1701903":["Araguacema",5927],"1702000":["Araguaçu",8133],"1702109":["Araguaína",171301],"1702158":["Araguanã",4310],"1702208":["Araguatins",31918],"1702307":["Arapoema",5550],"1702406":["Arraias",10287],"1702554":["Augustinópolis",17484],"1702703":["Aurora do Tocantins",3342],"1702901":["Axixá do Tocantins",10262],"1703008":["Babaçulândia",7880],"1703057":["Bandeirantes do Tocantins",3407],"1703073":["Barra do Ouro",4476],"1703107":["Barrolândia",4846],"1703206":["Bernardo Sayão",4229],"1703305":["Bom Jesus do Tocantins",4038],"1703602":["Brasilândia do Tocantins",1974],"1703701":["Brejinho de Nazaré",4725],"1703800":["Buriti do Tocantins",10307],"1703826":["Cachoeirinha",1961],"1703842":["Campos Lindos",8653],"1703867":["Cariri do Tocantins",4007],"1703883":["Carmolândia",2201],"1703891":["Carrasco Bonito",3318],"1703909":["Caseara",4847],"1704105":["Centenário",2131],"1704600":["Chapada de Areia",1501],"1705102":["Chapada da Natividade",3117],"1705508":["Colinas do Tocantins",34233],"1705557":["Combinado",4756],"1705607":["Conceição do Tocantins",3887],"1706001":["Couto Magalhães",5331],"1706100":["Cristalândia",6371],"1706258":["Crixás do Tocantins",1470],"1706506":["Darcinópolis",5827],"1707009":["Dianópolis",17739],"1707108":["Divinópolis do Tocantins",7024],"1707207":["Dois Irmãos do Tocantins",6327],"1707306":["Dueré",4248],"1707405":["Esperantina",7530],"1707553":["Fátima",3467],"1707652":["Figueirópolis",5211],"1707702":["Filadélfia",7712],"1708205":["Formoso do Araguaia",18881],"1708254":["Tabocão",3455],"1708304":["Goianorte",4738],"1709005":["Goiatins",12433],"1709302":["Guaraí",24775],"1709500":["Gurupi",85125],"1709807":["Ipueiras",1590],"1710508":["Itacajá",6819],"1710706":["Itaguatins",5172],"1710904":["Itapiratins",3577],"1711100":["Itaporã do Tocantins",2404],"1711506":["Jaú do Tocantins",3334],"1711803":["Juarina",2243],"1711902":["Lagoa da Confusão",15288],"1711951":["Lagoa do Tocantins",3516],"1712009":["Lajeado",3357],"1712157":["Lavandeira",1626],"1712405":["Lizarda",2999],"1712454":["Luzinópolis",2717],"1712504":["Marianópolis do Tocantins",4615],"1712702":["Mateiros",2748],"1712801":["Maurilândia do Tocantins",3095],"1713205":["Miracema do Tocantins",18566],"1713304":["Miranorte",12701],"1713601":["Monte do Carmo",5694],"1713700":["Monte Santo do Tocantins",2396],"1713809":["Palmeiras do Tocantins",4872],"1713957":["Muricilândia",3367],"1714203":["Natividade",8754],"1714302":["Nazaré",4521],"1714880":["Nova Olinda",10367],"1715002":["Nova Rosalândia",3362],"1715101":["Novo Acordo",3969],"1715150":["Novo Alegre",1846],"1715259":["Novo Jardim",2230],"1715507":["Oliveira de Fátima",1164],"1715705":["Palmeirante",4798],"1715754":["Palmeirópolis",6975],"1716109":["Paraíso do Tocantins",52360],"1716208":["Paranã",10542],"1716307":["Pau D'Arco",4043],"1716505":["Pedro Afonso",14055],"1716604":["Peixe",9317],"1716653":["Pequizeiro",4921],"1716703":["Colméia",8941],"1717008":["Pindorama do Tocantins",4478],"1717206":["Piraquê",2282],"1717503":["Pium",7128],"1717800":["Ponte Alta do Bom Jesus",4220],"1717909":["Ponte Alta do Tocantins",7586],"1718006":["Porto Alegre do Tocantins",2866],"1718204":["Porto Nacional",64418],"1718303":["Praia Norte",9044],"1718402":["Presidente Kennedy",3047],"1718451":["Pugmil",2193],"1718501":["Recursolândia",3421],"1718550":["Riachinho",3960],"1718659":["Rio da Conceição",1768],"1718709":["Rio dos Bois",2738],"1718758":["Rio Sono",4841],"1718808":["Sampaio",4215],"1718840":["Sandolândia",3723],"1718865":["Santa Fé do Araguaia",7216],"1718881":["Santa Maria do Tocantins",2680],"1718899":["Santa Rita do Tocantins",2219],"1718907":["Santa Rosa do Tocantins",4653],"1719004":["Santa Tereza do Tocantins",2781],"1720002":["Santa Terezinha do Tocantins",2406],"1720101":["São Bento do Tocantins",5654],"1720150":["São Félix do Tocantins",1783],"1720200":["São Miguel do Tocantins",13241],"1720259":["São Salvador do Tocantins",2385],"1720309":["São Sebastião do Tocantins",4100],"1720499":["São Valério",4422],"1720655":["Silvanópolis",5108],"1720804":["Sítio Novo do Tocantins",10830],"1720853":["Sucupira",1577],"1720903":["Taguatinga",14011],"1720937":["Taipas do Tocantins",2021],"1720978":["Talismã",2456],"1721000":["Palmas",302692],"1721109":["Tocantínia",7459],"1721208":["Tocantinópolis",22615],"1721257":["Tupirama",1909],"1721307":["Tupiratins",1874],"1722081":["Wanderlândia",10522],"1722107":["Xambioá",10517]};
+
+  static ABAS = [
+    { id: "municipio", rotulo: "Visão por município (139)", curto: "Município", icone: "ph-map-pin" },
+    { id: "estado", rotulo: "Visão geral do estado", curto: "Estado", icone: "ph-map-trifold" },
+    { id: "orgao", rotulo: "Visão por órgão (14)", curto: "Órgão", icone: "ph-buildings" },
+  ];
+
+  static LIMITE = 8;
+
+  static TEMAS = [
+    { id: "escuro", rotulo: "Escuro", icone: "ph-moon" },
+    { id: "claro", rotulo: "Claro", icone: "ph-sun" },
+  ];
+
+  constructor(props) {
+    super(props);
+    const censo = Component.CENSO_2022;
+    this.ordem = Object.keys(censo).sort((a, b) => censo[a][0].localeCompare(censo[b][0], "pt-BR"));
+    this.opcoesMunicipio = this.ordem.map((c) => ({ cod: c, rotulo: censo[c][0] + " (Código IBGE: " + c + ")" }));
+    this.popEstado = Object.values(censo).reduce((s, m) => s + m[1], 0);
+    this.vistos = { municipio: props.municipio, visao: props.visao, tema: props.tema };
+    this.state = {
+      aba: this.abaValida(props.visao) || "municipio",
+      cod: this.resolverCodigo(props.municipio) || "1721000",
+      orgao: "IBGE", tela: 0,
+      tema: this.temaSalvo() || (props.tema === "claro" ? "claro" : "escuro"),
+      formas: null, mapaErro: "", dados: null, dadosErro: "", dadosReais: null, dadosReaisErro: "",
+      bandeiraUrl: "", bandeiraOk: false,
+    };
+    for (const f of ["aoClicar", "aoTeclar", "aoAba", "aoTeclarAba", "aoMudarMunicipio", "aoMudarOrgao", "aoTema", "aoCategoria"]) this[f] = this[f].bind(this);
+  }
+
+  temaSalvo() {
+    try { const t = localStorage.getItem("painel-to-tema"); return t === "claro" || t === "escuro" ? t : null; } catch { return null; }
+  }
+
+  aoTema(e) {
+    const tema = e.currentTarget.getAttribute("data-tema");
+    this.setState({ tema });
+    try { localStorage.setItem("painel-to-tema", tema); } catch { /* armazenamento indisponível: vale só nesta visita */ }
+  }
+
+  aoCategoria(e) {
+    const tela = Number(e.currentTarget.getAttribute("data-tela"));
+    const topo = e.currentTarget.closest(".painel").querySelector(".corpo-topo");
+    this.setState({ tela }, () => {
+      if (topo.getBoundingClientRect().top >= 0) return;
+      const reduzir = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      topo.scrollIntoView({ behavior: reduzir ? "auto" : "smooth", block: "start" });
+    });
+  }
+
+  componentDidMount() {
+    this.checarBandeira();
+    this.carregar("./tocantins_municipios_regioes.geojson", (g) => !!g && Array.isArray(g.features),
+      (geo) => ({ formas: PainelLogica.projetar(geo, Component.CENSO_2022) }),
+      (msg) => ({ formas: [], mapaErro: "Não foi possível carregar o mapa (" + msg + ")." }));
+    this.carregar("./src/ui/data/painel_indicadores.json", (d) => this.dadosValidos(d),
+      (dados) => ({ dados }),
+      (msg) => ({ dadosErro: "Não foi possível carregar os indicadores (" + msg + ")." }));
+    this.carregar("./src/ui/data/estado_fontes.json", (d) => !!PainelLogica.situacaoFontes(d),
+      (estadoFontes) => ({ estadoFontes }),
+      () => ({ estadoFontesErro: true }));
+    this.carregar("./src/ui/data/painel_dados.json", (d) => !!d && ["fontes", "estado", "municipios"].every((k) => !!d[k] && typeof d[k] === "object"),
+      (dadosReais) => ({ dadosReais }),
+      (msg) => ({ dadosReaisErro: "Dados reais não carregados (" + msg + "). Rode scripts/exportar_painel.py." }));
+  }
+
+  async carregar(url, valido, ok, falha) {
+    try {
+      const res = await fetch(url); if (!res.ok) throw new Error("HTTP " + res.status);
+      const json = await res.json(); if (!valido(json)) throw new Error("formato inesperado");
+      this.setState(ok(json));
+    } catch (e) { this.setState(falha(e.message)); }
+  }
+
+  dadosValidos(d) {
+    const ok = (bs) => Array.isArray(bs) && bs.every((b) => b && typeof b.nome === "string" && Array.isArray(b.itens));
+    return !!d && !!d.municipio && ok(d.municipio.blocos) && !!d.estado && ok(d.estado.blocos) && Array.isArray(d.orgaos)
+      && d.orgaos.every((o) => o && typeof o.sigla === "string" && Array.isArray(o.itens) && !!o.maturidade);
+  }
+
+  componentDidUpdate() {
+    const p = this.props, v = this.vistos;
+    if (p.municipio !== v.municipio) { v.municipio = p.municipio; const cod = this.resolverCodigo(p.municipio); if (cod && cod !== this.state.cod) this.setState({ cod }); }
+    if (p.visao !== v.visao) { v.visao = p.visao; if (this.abaValida(p.visao)) this.setState({ aba: p.visao, tela: 0 }); }
+    if (p.tema !== v.tema) { v.tema = p.tema; if (p.tema === "claro" || p.tema === "escuro") this.setState({ tema: p.tema }); }
+    this.checarBandeira();
+  }
+
+  abaValida(id) { return Component.ABAS.some((a) => a.id === id) ? id : null; }
+
+  normalizar(s) { return String(s || "").normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim(); }
+
+  resolverCodigo(entrada) {
+    const s = String(entrada || "").trim();
+    if (Component.CENSO_2022[s]) return s;
+    const alvo = this.normalizar(s);
+    return this.ordem.find((c) => this.normalizar(Component.CENSO_2022[c][0]) === alvo) || null;
+  }
+
+  dadosMunicipio(cod) {
+    const [nome, populacao] = Component.CENSO_2022[cod];
+    const slug = this.normalizar(nome).replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+    return {
+      nome, populacao, foto: "",
+      cargo: "Prefeito(a) de " + nome,
+      bandeira: "./bandeiras/" + slug + "-to.webp",
+      ...(Component.MUNICIPIOS[cod] || {}),
+    };
+  }
+
+  checarBandeira() {
+    const url = this.state.aba === "estado" ? Component.ESTADO.bandeira : this.dadosMunicipio(this.state.cod).bandeira;
+    if (!url || url === this.state.bandeiraUrl) return;
+    this.setState({ bandeiraUrl: url, bandeiraOk: false });
+    const img = new Image();
+    img.onload = () => { if (this.state.bandeiraUrl === url) this.setState({ bandeiraOk: true }); };
+    img.src = url;
+  }
+
+  selecionar(cod, focarEm) {
+    this.setState((s) => ({ cod, aba: "municipio", tela: s.aba === "municipio" ? s.tela : 0 }), () => {
+      if (focarEm) focarEm.querySelector('path[data-cod="' + cod + '"]')?.focus();
+    });
+  }
+
+  aoClicar(e) { const cod = e.currentTarget.getAttribute("data-cod"); if (cod) this.selecionar(cod); }
+
+  aoMudarMunicipio(e) { if (Component.CENSO_2022[e.target.value]) this.selecionar(e.target.value); }
+
+  aoMudarOrgao(e) { this.setState({ orgao: e.target.value, tela: 0 }); }
+
+  aoAba(e) { this.setState({ aba: e.currentTarget.getAttribute("data-aba"), tela: 0 }); }
+
+  aoTeclarAba(e) {
+    const ids = Component.ABAS.map((a) => a.id);
+    const i = ids.indexOf(e.currentTarget.getAttribute("data-aba"));
+    const alvo = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: ids.length - 1 }[e.key];
+    if (alvo === undefined) return;
+    e.preventDefault();
+    const id = ids[(alvo + ids.length) % ids.length];
+    const lista = e.currentTarget.parentElement;
+    this.setState({ aba: id, tela: 0 }, () => lista.querySelector('[data-aba="' + id + '"]')?.focus());
+  }
+
+  aoTeclar(e) {
+    const atual = e.currentTarget.getAttribute("data-cod");
+    const i = this.ordem.indexOf(atual);
+    const n = this.ordem.length;
+    const passos = { ArrowRight: i + 1, ArrowDown: i + 1, ArrowLeft: i - 1, ArrowUp: i - 1, Home: 0, End: n - 1 };
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      this.selecionar(atual);
+    } else if (e.key in passos) {
+      e.preventDefault();
+      this.selecionar(this.ordem[(passos[e.key] + n) % n], e.currentTarget.ownerSVGElement);
+    }
+  }
+
+  dataColeta() {
+    const g = this.state.dadosReais && new Date(this.state.dadosReais.gerado_em);
+    return g && !isNaN(g) ? "Dados coletados em " + g.toLocaleDateString("pt-BR") + "." : "";
+  }
+
+  avisoDados(blocos) {
+    const { dadosReais, dadosReaisErro } = this.state;
+    return dadosReais || dadosReaisErro ? PainelLogica.aviso(blocos, dadosReaisErro) : "Carregando indicadores…";
+  }
+
+  // Série real do indicador: undefined = carregando, null = "Não coletado" (sem coletor ou fonte com erro), [] = "Sem dado".
+  serieDe(item, cod) {
+    const d = this.state.dadosReais;
+    if (!d) return this.state.dadosReaisErro ? null : undefined;
+    const fonte = item.ind && Object.values(d.fontes).find((f) => f.indicador === item.ind);
+    if (!fonte || fonte.status !== "ok") return null;
+    const serie = cod ? (d.municipios[cod] || {})[item.ind] : d.estado[item.ind];
+    return Array.isArray(serie) ? serie : [];
+  }
+
+  // Titular eleito (TSE) do município ou, sem cod, do estado: { nome, legenda } ou null ("não informado(a)").
+  titularDe(cod) {
+    const t = this.state.dadosReais && this.state.dadosReais.titulares;
+    if (!t || typeof t !== "object") return null;
+    return PainelLogica.titular(cod ? t.municipios && t.municipios[cod] : t.estado);
+  }
+
+  cabecalhoTitular(base, tit, vago) {
+    return { ...base, subtitulo: tit ? tit.nome : vago, legenda: tit ? " · " + tit.legenda : "", subClasse: tit ? "" : "vago" };
+  }
+
+  renderVals() {
+    const { aba, cod, dados } = this.state;
+    const m = this.dadosMunicipio(cod), E = Component.ESTADO;
+    const formas = this.state.formas || [];
+    const naoCarregou = this.state.dadosErro || "Carregando indicadores…";
+    let cab, blocos = [], titulo = "Indicadores", aviso = naoCarregou, orgao = {};
+
+    if (aba === "municipio") {
+      cab = this.cabecalhoTitular({ titulo: m.nome, tag: m.cargo, popFmt: PainelLogica.fmt(m.populacao) }, this.titularDe(cod), "Prefeito(a) não informado(a)");
+      if (dados) {
+        blocos = PainelLogica.montarBlocos(dados.municipio.blocos, (i) => this.serieDe(i, cod));
+        aviso = this.avisoDados(blocos);
+      }
+    } else if (aba === "estado") {
+      cab = this.cabecalhoTitular({ titulo: E.nome, tag: E.cargo, popFmt: PainelLogica.fmt(this.popEstado) }, this.titularDe(), "Governador(a) não informado(a)");
+      titulo = "Indicadores do estado";
+      if (dados) {
+        blocos = PainelLogica.montarBlocos(dados.estado.blocos, (i) => this.serieDe(i));
+        aviso = this.avisoDados(blocos);
+      }
+    } else {
+      const o = (dados && (dados.orgaos.find((x) => x.sigla === this.state.orgao) || dados.orgaos[0])) || null;
+      titulo = "Indicadores fornecidos";
+      cab = { titulo: o ? o.sigla : this.state.orgao, subtitulo: o ? o.nome : naoCarregou, legenda: "", subClasse: o ? "" : "vago", tag: o ? "Esfera " + o.esfera.toLowerCase() : "" };
+      if (o) {
+        cab.desc = o.maturidade.desc;
+        orgao = { sigla: o.sigla, pct: o.maturidade.pct, frac: o.maturidade.pct / 100, nivel: "Nível " + o.maturidade.nivel.toLowerCase(), fontes: o.maturidade.fontes };
+        blocos = PainelLogica.montarBlocos([{ id: "orgao", nome: "Catálogo do órgão", icone: "ph-database", itens: o.itens }], (i) => this.serieDe(i));
+        aviso = this.avisoDados(blocos);
+      }
+    }
+
+    const telas = PainelLogica.montarTelas(blocos, Component.LIMITE);
+    const tela = Math.min(this.state.tela, Math.max(telas.length - 1, 0));
+    const naTela = telas[tela] ? telas[tela].blocos : [];
+    const noMunicipio = aba === "municipio";
+    const r = noMunicipio ? { lugar: m.nome, funcao: "prefeito(a)", foto: m.foto, bandeira: m.bandeira }
+      : { lugar: E.nome, funcao: "governador(a)", foto: E.foto, bandeira: E.bandeira };
+    const temBandeira = this.state.bandeiraOk && this.state.bandeiraUrl === r.bandeira;
+    return {
+      tema: this.state.tema,
+      temas: Component.TEMAS.map((t) => ({ ...t, ativo: t.id === this.state.tema })),
+      densidade: this.props.densidade === "confortavel" ? "confortavel" : "compacta",
+      mostrarBandeira: this.props.mostrarBandeira !== false,
+      aba, cod, cab, orgao,
+      cartoes: naTela.flatMap((b) => b.itens.map((c) => ({ ...c, cat: aba === "orgao" ? "" : b.base, catIcone: b.icone }))),
+      temCategorias: telas.length > 1,
+      grupos: telas.map((t, i) => ({ ativo: i === tela, itens: t.blocos.map((b) => ({ nome: b.nome, icone: b.icone, tela: i, atual: i === tela })) })),
+      telaAnuncio: telas.length > 1 ? "Mostrando " + naTela.map((b) => b.nome).join(", ") : "",
+      visaoMunicipio: noMunicipio, visaoOrgao: aba === "orgao", temMapa: aba !== "orgao",
+      abas: Component.ABAS.map((a) => ({ ...a, ativa: a.id === aba, tab: a.id === aba ? 0 : -1 })),
+      opcoesMunicipio: this.opcoesMunicipio,
+      opcoesOrgao: dados ? dados.orgaos.map((o) => ({ sigla: o.sigla, rotulo: o.sigla + " · " + o.nome })) : [],
+      temRetratos: aba !== "orgao",
+      ret: { ...r, pessoa: cab.subtitulo, temFoto: !!r.foto, semFoto: !r.foto, temBandeira, semBandeira: !temBandeira },
+      municipios: formas.map((f) => ({
+        ...f, nome: Component.CENSO_2022[f.cod][0],
+        sel: noMunicipio && f.cod === cod,
+        tab: noMunicipio && f.cod === cod ? 0 : -1,
+      })),
+      destaqueD: noMunicipio ? (formas.find((f) => f.cod === cod) || {}).d || "" : "",
+      mapaCarregando: this.state.formas === null,
+      mapaOculto: this.state.formas === null || !noMunicipio,
+      mapaErro: this.state.mapaErro,
+      rodapeDados: this.dataColeta(),
+      situacao: PainelLogica.situacaoFontes(this.state.estadoFontes),
+      situacaoIndisponivel: !!this.state.estadoFontesErro,
+      tituloCorpo: titulo,
+      avisoDados: aviso,
+      aoClicar: this.aoClicar, aoTeclar: this.aoTeclar,
+      aoAba: this.aoAba, aoTeclarAba: this.aoTeclarAba,
+      aoMudarMunicipio: this.aoMudarMunicipio, aoMudarOrgao: this.aoMudarOrgao,
+      aoTema: this.aoTema, aoCategoria: this.aoCategoria,
+    };
+  }
+}
+</script>
+</body>
+</html>

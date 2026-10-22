@@ -1,0 +1,727 @@
+{
+ "_aviso": "Catálogo dos indicadores do painel: sem valores. `ind` liga o cartão ao indicador coletado em painel_dados.json (gerado por scripts/exportar_painel.py); sem `ind` o cartão aparece como 'Não coletado'. `moeda`: base R$ mil, escolhe bi/mi/mil pelo tamanho.",
+ "municipio": {
+  "blocos": [
+   {
+    "id": "economia",
+    "nome": "Economia e trabalho",
+    "icone": "ph-chart-line-up",
+    "itens": [
+     {
+      "id": "pib",
+      "titulo": "PIB municipal",
+      "sentido": "maior_melhor",
+      "fonte": "IBGE/Contas Regionais",
+      "ind": "pib_municipal",
+      "moeda": true
+     },
+     {
+      "id": "empresas_ativas",
+      "titulo": "Empresas ativas",
+      "unidade": "empresas",
+      "sentido": "maior_melhor",
+      "fonte": "Mapa de Empresas"
+     },
+     {
+      "id": "saldo_caged",
+      "titulo": "Saldo de empregos formais",
+      "unidade": "vagas",
+      "sentido": "maior_melhor",
+      "fonte": "Novo CAGED",
+      "varUni": "vagas"
+     },
+     {
+      "id": "exportacoes",
+      "titulo": "Exportações",
+      "unidade": "US$ mi",
+      "casas": 1,
+      "sentido": "maior_melhor",
+      "fonte": "Comex Stat"
+     }
+    ]
+   },
+   {
+    "id": "producao",
+    "nome": "Produção",
+    "icone": "ph-plant",
+    "itens": [
+     {
+      "id": "producao_agricola",
+      "titulo": "Valor da produção agrícola",
+      "sentido": "maior_melhor",
+      "fonte": "IBGE/PAM",
+      "ind": "producao_agricola",
+      "moeda": true
+     },
+     {
+      "id": "rebanho_bovino",
+      "titulo": "Rebanho bovino",
+      "unidade": "cabeças",
+      "sentido": "neutro",
+      "fonte": "IBGE/PPM",
+      "ind": "rebanho_bovino"
+     }
+    ]
+   },
+   {
+    "id": "financas",
+    "nome": "Finanças públicas",
+    "icone": "ph-bank",
+    "itens": [
+     {
+      "id": "rcl",
+      "titulo": "Receita corrente líquida",
+      "sentido": "maior_melhor",
+      "fonte": "STN/SICONFI (RREO/RGF)",
+      "ind": "receita_corrente_liquida",
+      "moeda": true
+     },
+     {
+      "id": "capag",
+      "titulo": "Capacidade de pagamento",
+      "unidade": "CAPAG",
+      "sentido": "maior_melhor",
+      "fonte": "Tesouro Nacional",
+      "texto": true
+     },
+     {
+      "id": "convenios",
+      "titulo": "Convênios recebidos",
+      "unidade": "R$ mi",
+      "casas": 1,
+      "sentido": "neutro",
+      "fonte": "Transferegov"
+     }
+    ]
+   },
+   {
+    "id": "saude",
+    "nome": "Saúde",
+    "icone": "ph-heartbeat",
+    "itens": [
+     {
+      "id": "leitos_sus",
+      "titulo": "Leitos SUS",
+      "unidade": "leitos",
+      "sentido": "maior_melhor",
+      "fonte": "CNES/DATASUS"
+     },
+     {
+      "id": "cobertura_vacinal",
+      "titulo": "Cobertura vacinal",
+      "unidade": "%",
+      "casas": 1,
+      "sentido": "maior_melhor",
+      "fonte": "PNI/DATASUS",
+      "varUni": "p.p."
+     },
+     {
+      "id": "mortalidade_infantil",
+      "titulo": "Mortalidade infantil",
+      "unidade": "por mil nascidos vivos",
+      "casas": 1,
+      "sentido": "menor_melhor",
+      "fonte": "SIM/SINASC"
+     }
+    ]
+   },
+   {
+    "id": "educacao",
+    "nome": "Educação",
+    "icone": "ph-graduation-cap",
+    "itens": [
+     {
+      "id": "ideb_ai",
+      "titulo": "IDEB (anos iniciais)",
+      "unidade": "nota",
+      "casas": 1,
+      "sentido": "maior_melhor",
+      "fonte": "INEP",
+      "varUni": "pt",
+      "passo": 2
+     },
+     {
+      "id": "repasses_fnde",
+      "titulo": "Repasses do FNDE",
+      "unidade": "R$ mi",
+      "casas": 1,
+      "sentido": "neutro",
+      "fonte": "FNDE"
+     }
+    ]
+   }
+  ]
+ },
+ "estado": {
+  "blocos": [
+   {
+    "id": "territorio",
+    "nome": "População e território",
+    "icone": "ph-map-trifold",
+    "itens": [
+     {
+      "titulo": "População estimada",
+      "fonte": "IBGE/SIDRA 6579",
+      "ind": "populacao_residente",
+      "unidade": "hab",
+      "sentido": "neutro"
+     },
+     {
+      "titulo": "Área territorial",
+      "fonte": "IBGE/Censo 2022",
+      "ind": "area_territorial",
+      "unidade": "km²",
+      "casas": 0,
+      "sentido": "neutro"
+     }
+    ]
+   },
+   {
+    "id": "economia",
+    "nome": "Economia e trabalho",
+    "icone": "ph-chart-line-up",
+    "itens": [
+     {
+      "titulo": "PIB estadual",
+      "sentido": "maior_melhor",
+      "fonte": "IBGE/Contas Regionais",
+      "ind": "pib_estadual",
+      "moeda": true
+     },
+     {
+      "titulo": "Taxa de desocupação",
+      "unidade": "%",
+      "casas": 1,
+      "sentido": "menor_melhor",
+      "fonte": "IBGE/PNAD Contínua",
+      "varUni": "p.p.",
+      "ind": "taxa_desocupacao"
+     }
+    ]
+   },
+   {
+    "id": "financas",
+    "nome": "Finanças públicas",
+    "icone": "ph-bank",
+    "itens": [
+     {
+      "titulo": "Receita corrente líquida",
+      "fonte": "STN/SICONFI (RREO/RGF)",
+      "ind": "receita_corrente_liquida",
+      "moeda": true,
+      "sentido": "maior_melhor"
+     },
+     {
+      "titulo": "Despesas públicas",
+      "unidade": "R$ bi",
+      "casas": 1,
+      "sentido": "neutro",
+      "fonte": "STN/SICONFI"
+     },
+     {
+      "titulo": "Execução orçamentária",
+      "unidade": "% executado",
+      "casas": 1,
+      "sentido": "maior_melhor",
+      "fonte": "STN/SICONFI",
+      "varUni": "p.p."
+     },
+     {
+      "titulo": "Despesa com pessoal (LRF)",
+      "unidade": "% da RCL",
+      "casas": 1,
+      "sentido": "menor_melhor",
+      "fonte": "STN/SICONFI",
+      "varUni": "p.p."
+     }
+    ]
+   },
+   {
+    "id": "saude",
+    "nome": "Saúde",
+    "icone": "ph-heartbeat",
+    "itens": [
+     {
+      "titulo": "Leitos SUS",
+      "unidade": "leitos",
+      "sentido": "maior_melhor",
+      "fonte": "CNES/DATASUS"
+     },
+     {
+      "titulo": "Cobertura vacinal",
+      "unidade": "%",
+      "casas": 1,
+      "sentido": "maior_melhor",
+      "fonte": "PNI/DATASUS",
+      "varUni": "p.p."
+     },
+     {
+      "titulo": "Mortalidade infantil",
+      "unidade": "por mil nascidos vivos",
+      "casas": 1,
+      "sentido": "menor_melhor",
+      "fonte": "SIM/SINASC"
+     }
+    ]
+   },
+   {
+    "id": "educacao",
+    "nome": "Educação",
+    "icone": "ph-graduation-cap",
+    "itens": [
+     {
+      "titulo": "IDEB (anos iniciais)",
+      "unidade": "nota",
+      "casas": 1,
+      "sentido": "maior_melhor",
+      "fonte": "INEP",
+      "varUni": "pt",
+      "passo": 2
+     },
+     {
+      "titulo": "Repasses do FNDE",
+      "unidade": "R$ mi",
+      "casas": 1,
+      "sentido": "neutro",
+      "fonte": "FNDE"
+     }
+    ]
+   },
+   {
+    "id": "gestao",
+    "nome": "Gestão e serviços",
+    "icone": "ph-buildings",
+    "itens": [
+     {
+      "titulo": "Ocorrências de segurança pública",
+      "unidade": "casos",
+      "fonte": "SSP-TO"
+     },
+     {
+      "titulo": "Fluxo e oferta turística",
+      "unidade": "visitantes",
+      "fonte": "ADETUC"
+     },
+     {
+      "titulo": "Rodovias e obras estaduais",
+      "unidade": "km",
+      "fonte": "AGETO"
+     },
+     {
+      "titulo": "Ouvidoria e controle interno",
+      "unidade": "manifestações",
+      "fonte": "CGE-TO"
+     },
+     {
+      "titulo": "Serviços públicos digitais",
+      "unidade": "serviços",
+      "fonte": "ATI-TO"
+     },
+     {
+      "titulo": "Chamados de TI estadual",
+      "unidade": "chamados",
+      "fonte": "ATI-TO"
+     },
+     {
+      "titulo": "Atos oficiais publicados",
+      "unidade": "edições",
+      "fonte": "Diário Oficial do TO"
+     }
+    ]
+   }
+  ]
+ },
+ "orgaos": [
+  {
+   "sigla": "IBGE",
+   "nome": "Instituto Brasileiro de Geografia e Estatística",
+   "esfera": "Federal",
+   "maturidade": {
+    "nivel": "Avançado",
+    "pct": 100,
+    "fontes": "7 fontes abertas · 0 apenas-link (grau A)",
+    "desc": "Proporção de fontes reutilizáveis em formato aberto (API SIDRA, JSON, CSV)."
+   },
+   "itens": [
+    {
+     "titulo": "População estimada",
+     "fonte": "IBGE/SIDRA 6579",
+     "ind": "populacao_residente",
+     "unidade": "hab",
+     "sentido": "neutro"
+    },
+    {
+     "titulo": "PIB estadual",
+     "fonte": "IBGE/Contas Regionais",
+     "ind": "pib_estadual",
+     "moeda": true,
+     "sentido": "maior_melhor"
+    },
+    {
+     "titulo": "Área territorial",
+     "fonte": "IBGE/Censo 2022",
+     "ind": "area_territorial",
+     "unidade": "km²",
+     "casas": 0,
+     "sentido": "neutro"
+    },
+    {
+     "titulo": "Produção agrícola (soma dos municípios)",
+     "fonte": "IBGE/PAM",
+     "ind": "producao_agricola",
+     "moeda": true,
+     "sentido": "maior_melhor"
+    },
+    {
+     "titulo": "Rebanho bovino (soma dos municípios)",
+     "fonte": "IBGE/PPM",
+     "ind": "rebanho_bovino",
+     "unidade": "cabeças",
+     "sentido": "neutro"
+    },
+    {
+     "titulo": "Taxa de desocupação",
+     "fonte": "IBGE/PNAD Contínua",
+     "ind": "taxa_desocupacao",
+     "unidade": "%",
+     "casas": 1,
+     "sentido": "menor_melhor",
+     "varUni": "p.p."
+    }
+   ]
+  },
+  {
+   "sigla": "INEP",
+   "nome": "Instituto Nacional de Estudos e Pesquisas Educacionais",
+   "esfera": "Federal",
+   "maturidade": {
+    "nivel": "Avançado",
+    "pct": 100,
+    "fontes": "4 fontes abertas · 0 apenas-link (grau A)",
+    "desc": "Indicadores educacionais oficiais em microdados e APIs do Ministério da Educação."
+   },
+   "itens": [
+    {
+     "titulo": "IDEB (redes estadual e municipal)",
+     "unidade": "nota",
+     "casas": 1,
+     "sentido": "maior_melhor",
+     "fonte": "INEP",
+     "passo": 2
+    },
+    {
+     "titulo": "SAEB: proficiência em LP e Matemática",
+     "unidade": "pontos",
+     "casas": 1,
+     "sentido": "maior_melhor",
+     "fonte": "INEP",
+     "passo": 2
+    },
+    {
+     "titulo": "Censo Escolar: matrículas",
+     "unidade": "matrículas",
+     "sentido": "neutro",
+     "fonte": "INEP"
+    },
+    {
+     "titulo": "Taxa de aprovação",
+     "unidade": "%",
+     "casas": 1,
+     "sentido": "maior_melhor",
+     "fonte": "INEP"
+    }
+   ]
+  },
+  {
+   "sigla": "FNDE",
+   "nome": "Fundo Nacional de Desenvolvimento da Educação",
+   "esfera": "Federal",
+   "maturidade": {
+    "nivel": "Avançado",
+    "pct": 100,
+    "fontes": "1 fonte aberta · 0 apenas-link (grau A)",
+    "desc": "Repasses financeiros da educação (PNAE, PNATE, FUNDEB) em dados abertos."
+   },
+   "itens": [
+    {
+     "titulo": "Repasses FNDE (PNAE, PNATE, FUNDEB)",
+     "unidade": "R$ mil",
+     "sentido": "neutro",
+     "fonte": "FNDE"
+    }
+   ]
+  },
+  {
+   "sigla": "MTE",
+   "nome": "Ministério do Trabalho e Emprego",
+   "esfera": "Federal",
+   "maturidade": {
+    "nivel": "Avançado",
+    "pct": 100,
+    "fontes": "1 fonte aberta · 0 apenas-link (grau A)",
+    "desc": "Dados mensais de movimentação do emprego formal via Novo CAGED."
+   },
+   "itens": [
+    {
+     "titulo": "Saldo de empregos formais",
+     "unidade": "postos",
+     "sentido": "maior_melhor",
+     "fonte": "Novo CAGED"
+    }
+   ]
+  },
+  {
+   "sigla": "MDIC",
+   "nome": "Ministério do Desenvolvimento, Indústria e Comércio",
+   "esfera": "Federal",
+   "maturidade": {
+    "nivel": "Avançado",
+    "pct": 100,
+    "fontes": "1 fonte aberta · 0 apenas-link (grau A)",
+    "desc": "Estatísticas de comércio exterior municipal e balança comercial via Comex Stat."
+   },
+   "itens": [
+    {
+     "titulo": "Exportações municipais",
+     "unidade": "US$ mil",
+     "sentido": "maior_melhor",
+     "fonte": "Comex Stat"
+    }
+   ]
+  },
+  {
+   "sigla": "ME",
+   "nome": "Ministério da Economia (Mapa de Empresas)",
+   "esfera": "Federal",
+   "maturidade": {
+    "nivel": "Avançado",
+    "pct": 100,
+    "fontes": "1 fonte aberta · 0 apenas-link (grau A)",
+    "desc": "Painel e dados abertos de empresas ativas e tempo de abertura por município."
+   },
+   "itens": [
+    {
+     "titulo": "Empresas abertas e fechadas",
+     "unidade": "empresas",
+     "sentido": "maior_melhor",
+     "fonte": "Mapa de Empresas"
+    }
+   ]
+  },
+  {
+   "sigla": "DATASUS",
+   "nome": "Departamento de Informática do SUS",
+   "esfera": "Federal",
+   "maturidade": {
+    "nivel": "Avançado",
+    "pct": 100,
+    "fontes": "3 fontes abertas · 0 apenas-link (grau A)",
+    "desc": "Bases da saúde pública (CNES, PNI, SIM/SINASC, SIA/SIH) via PySUS e FTP oficial."
+   },
+   "itens": [
+    {
+     "titulo": "Leitos (SIA/SIH/CNES)",
+     "unidade": "leitos",
+     "sentido": "maior_melhor",
+     "fonte": "CNES/DATASUS"
+    },
+    {
+     "titulo": "Cobertura vacinal",
+     "unidade": "%",
+     "casas": 1,
+     "sentido": "maior_melhor",
+     "fonte": "PNI/DATASUS"
+    },
+    {
+     "titulo": "Mortalidade infantil",
+     "unidade": "por mil nascidos vivos",
+     "casas": 1,
+     "sentido": "menor_melhor",
+     "fonte": "SIM/SINASC"
+    }
+   ]
+  },
+  {
+   "sigla": "STN",
+   "nome": "Secretaria do Tesouro Nacional (SICONFI)",
+   "esfera": "Federal",
+   "maturidade": {
+    "nivel": "Avançado",
+    "pct": 100,
+    "fontes": "4 fontes abertas · 0 apenas-link (grau A)",
+    "desc": "API oficial de informações contábeis e fiscais (SICONFI) e avaliação CAPAG."
+   },
+   "itens": [
+    {
+     "titulo": "Receita corrente líquida do estado",
+     "fonte": "STN/SICONFI (RREO/RGF)",
+     "ind": "receita_corrente_liquida",
+     "moeda": true,
+     "sentido": "maior_melhor"
+    },
+    {
+     "titulo": "Indicadores da LRF",
+     "unidade": "situação",
+     "sentido": "neutro",
+     "fonte": "STN/SICONFI",
+     "texto": true
+    },
+    {
+     "titulo": "Execução orçamentária (DCA/RREO)",
+     "unidade": "R$ bi",
+     "casas": 1,
+     "sentido": "neutro",
+     "fonte": "STN/SICONFI"
+    },
+    {
+     "titulo": "Capacidade de pagamento",
+     "unidade": "CAPAG",
+     "sentido": "maior_melhor",
+     "fonte": "Tesouro Nacional",
+     "texto": true
+    }
+   ]
+  },
+  {
+   "sigla": "SEFAZ-TO",
+   "nome": "Secretaria da Fazenda do Estado do Tocantins",
+   "esfera": "Estadual",
+   "maturidade": {
+    "nivel": "Inexistente",
+    "pct": 0,
+    "fontes": "0 fontes abertas · 3 apenas-link (grau D)",
+    "desc": "Portal em Vaadin 8.9.2 sem API REST/JSON pública. A cobertura fiscal do estado vem do SICONFI/STN."
+   },
+   "itens": [
+    {
+     "titulo": "Receitas públicas estaduais",
+     "unidade": "R$",
+     "fonte": "Portal da Transparência TO"
+    },
+    {
+     "titulo": "Despesas públicas estaduais",
+     "unidade": "R$",
+     "fonte": "Portal da Transparência TO"
+    },
+    {
+     "titulo": "Atos oficiais publicados",
+     "unidade": "edições",
+     "fonte": "Diário Oficial do TO"
+    }
+   ]
+  },
+  {
+   "sigla": "SES-TO",
+   "nome": "Secretaria de Estado da Saúde do Tocantins",
+   "esfera": "Estadual",
+   "maturidade": {
+    "nivel": "Inexistente",
+    "pct": 0,
+    "fontes": "0 fontes abertas · 1 apenas-link (grau D)",
+    "desc": "Publicações só em boletins HTML/PDF, sem API pública. A cobertura da saúde vem do DATASUS."
+   },
+   "itens": [
+    {
+     "titulo": "Boletim epidemiológico estadual",
+     "unidade": "boletins",
+     "fonte": "SES-TO"
+    }
+   ]
+  },
+  {
+   "sigla": "SEDUC-TO",
+   "nome": "Secretaria da Educação do Estado do Tocantins",
+   "esfera": "Estadual",
+   "maturidade": {
+    "nivel": "Inexistente",
+    "pct": 0,
+    "fontes": "0 fontes abertas · 1 apenas-link (grau D)",
+    "desc": "Relatórios em PDF, sem API REST aberta. A cobertura educacional vem do INEP e do FNDE."
+   },
+   "itens": [
+    {
+     "titulo": "Programas educacionais do estado",
+     "unidade": "programas",
+     "fonte": "SEDUC-TO"
+    }
+   ]
+  },
+  {
+   "sigla": "TCE-TO",
+   "nome": "Tribunal de Contas do Estado do Tocantins",
+   "esfera": "Estadual",
+   "maturidade": {
+    "nivel": "Inexistente",
+    "pct": 0,
+    "fontes": "0 fontes abertas · 2 apenas-link (grau D)",
+    "desc": "Raspagem automatizada em Python no portal e no boletim do TCE-TO (pautas de julgamento e alertas da LRF)."
+   },
+   "itens": [
+    {
+     "titulo": "Prestação de contas municipais",
+     "unidade": "municípios auditados",
+     "sentido": "neutro",
+     "fonte": "TCE-TO (raspagem)"
+    },
+    {
+     "titulo": "Alertas da LRF monitorados",
+     "unidade": "alertas",
+     "sentido": "neutro",
+     "fonte": "TCE-TO (raspagem)"
+    }
+   ]
+  },
+  {
+   "sigla": "SEAGRO-TO",
+   "nome": "Secretaria da Agricultura, Pecuária e Aquicultura (Lab63)",
+   "esfera": "Estadual",
+   "maturidade": {
+    "nivel": "Inexistente",
+    "pct": 0,
+    "fontes": "0 fontes abertas · 2 apenas-link (grau D)",
+    "desc": "Raspagem automatizada em Python no portal SEAGRO/Lab63 (cotações da CEASA e boletins agrícolas)."
+   },
+   "itens": [
+    {
+     "titulo": "Boletins de safra (Lab63)",
+     "unidade": "boletins",
+     "sentido": "neutro",
+     "fonte": "SEAGRO-TO (raspagem)"
+    },
+    {
+     "titulo": "Cotações do agronegócio",
+     "unidade": "R$/saco (CEASA)",
+     "casas": 2,
+     "sentido": "neutro",
+     "fonte": "SEAGRO-TO (raspagem)"
+    }
+   ]
+  },
+  {
+   "sigla": "CGE-TO",
+   "nome": "Controladoria-Geral do Estado (SIAFE-TO)",
+   "esfera": "Estadual",
+   "maturidade": {
+    "nivel": "Inexistente",
+    "pct": 0,
+    "fontes": "0 fontes abertas · 2 apenas-link (grau D)",
+    "desc": "Raspagem automatizada em Python no Portal da Transparência SIAFE (execução orçamentária e relatórios da CGE)."
+   },
+   "itens": [
+    {
+     "titulo": "Execução orçamentária e financeira (SIAFE)",
+     "unidade": "R$ bi",
+     "casas": 1,
+     "sentido": "neutro",
+     "fonte": "CGE-TO (raspagem)"
+    },
+    {
+     "titulo": "Relatórios de gestão e ouvidoria",
+     "unidade": "relatórios",
+     "sentido": "neutro",
+     "fonte": "CGE-TO (raspagem)"
+    }
+   ]
+  }
+ ]
+}

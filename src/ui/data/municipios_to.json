@@ -1,0 +1,697 @@
+[
+  {
+    "id_municipio": "1700251",
+    "nome": "Abreulândia",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1700301",
+    "nome": "Aguiarnópolis",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1700350",
+    "nome": "Aliança do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1700400",
+    "nome": "Almas",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1700707",
+    "nome": "Alvorada",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1701002",
+    "nome": "Ananás",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1701051",
+    "nome": "Angico",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1701101",
+    "nome": "Aparecida do Rio Negro",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1701309",
+    "nome": "Aragominas",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1701903",
+    "nome": "Araguacema",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1702158",
+    "nome": "Araguanã",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1702208",
+    "nome": "Araguatins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1702000",
+    "nome": "Araguaçu",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1702109",
+    "nome": "Araguaína",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1702307",
+    "nome": "Arapoema",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1702406",
+    "nome": "Arraias",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1702554",
+    "nome": "Augustinópolis",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1702703",
+    "nome": "Aurora do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1702901",
+    "nome": "Axixá do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1703008",
+    "nome": "Babaçulândia",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1703057",
+    "nome": "Bandeirantes do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1703073",
+    "nome": "Barra do Ouro",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1703107",
+    "nome": "Barrolândia",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1703206",
+    "nome": "Bernardo Sayão",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1703305",
+    "nome": "Bom Jesus do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1703602",
+    "nome": "Brasilândia do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1703701",
+    "nome": "Brejinho de Nazaré",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1703800",
+    "nome": "Buriti do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1703826",
+    "nome": "Cachoeirinha",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1703842",
+    "nome": "Campos Lindos",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1703867",
+    "nome": "Cariri do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1703883",
+    "nome": "Carmolândia",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1703891",
+    "nome": "Carrasco Bonito",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1703909",
+    "nome": "Caseara",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1704105",
+    "nome": "Centenário",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1705102",
+    "nome": "Chapada da Natividade",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1704600",
+    "nome": "Chapada de Areia",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1705508",
+    "nome": "Colinas do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1716703",
+    "nome": "Colméia",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1705557",
+    "nome": "Combinado",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1705607",
+    "nome": "Conceição do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1706001",
+    "nome": "Couto Magalhães",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1706100",
+    "nome": "Cristalândia",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1706258",
+    "nome": "Crixás do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1706506",
+    "nome": "Darcinópolis",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1707009",
+    "nome": "Dianópolis",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1707108",
+    "nome": "Divinópolis do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1707207",
+    "nome": "Dois Irmãos do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1707306",
+    "nome": "Dueré",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1707405",
+    "nome": "Esperantina",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1707652",
+    "nome": "Figueirópolis",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1707702",
+    "nome": "Filadélfia",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1708205",
+    "nome": "Formoso do Araguaia",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1707553",
+    "nome": "Fátima",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1708304",
+    "nome": "Goianorte",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1709005",
+    "nome": "Goiatins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1709302",
+    "nome": "Guaraí",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1709500",
+    "nome": "Gurupi",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1709807",
+    "nome": "Ipueiras",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1710508",
+    "nome": "Itacajá",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1710706",
+    "nome": "Itaguatins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1710904",
+    "nome": "Itapiratins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1711100",
+    "nome": "Itaporã do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1711506",
+    "nome": "Jaú do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1711803",
+    "nome": "Juarina",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1711902",
+    "nome": "Lagoa da Confusão",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1711951",
+    "nome": "Lagoa do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1712009",
+    "nome": "Lajeado",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1712157",
+    "nome": "Lavandeira",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1712405",
+    "nome": "Lizarda",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1712454",
+    "nome": "Luzinópolis",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1712504",
+    "nome": "Marianópolis do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1712702",
+    "nome": "Mateiros",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1712801",
+    "nome": "Maurilândia do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1713205",
+    "nome": "Miracema do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1713304",
+    "nome": "Miranorte",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1713700",
+    "nome": "Monte Santo do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1713601",
+    "nome": "Monte do Carmo",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1713957",
+    "nome": "Muricilândia",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1714203",
+    "nome": "Natividade",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1714302",
+    "nome": "Nazaré",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1714880",
+    "nome": "Nova Olinda",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1715002",
+    "nome": "Nova Rosalândia",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1715101",
+    "nome": "Novo Acordo",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1715150",
+    "nome": "Novo Alegre",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1715259",
+    "nome": "Novo Jardim",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1715507",
+    "nome": "Oliveira de Fátima",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1721000",
+    "nome": "Palmas",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1715705",
+    "nome": "Palmeirante",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1713809",
+    "nome": "Palmeiras do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1715754",
+    "nome": "Palmeirópolis",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1716208",
+    "nome": "Paranã",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1716109",
+    "nome": "Paraíso do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1716307",
+    "nome": "Pau D'Arco",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1716505",
+    "nome": "Pedro Afonso",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1716604",
+    "nome": "Peixe",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1716653",
+    "nome": "Pequizeiro",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1717008",
+    "nome": "Pindorama do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1717206",
+    "nome": "Piraquê",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1717503",
+    "nome": "Pium",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1717800",
+    "nome": "Ponte Alta do Bom Jesus",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1717909",
+    "nome": "Ponte Alta do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1718006",
+    "nome": "Porto Alegre do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1718204",
+    "nome": "Porto Nacional",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1718303",
+    "nome": "Praia Norte",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1718402",
+    "nome": "Presidente Kennedy",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1718451",
+    "nome": "Pugmil",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1718501",
+    "nome": "Recursolândia",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1718550",
+    "nome": "Riachinho",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1718758",
+    "nome": "Rio Sono",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1718659",
+    "nome": "Rio da Conceição",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1718709",
+    "nome": "Rio dos Bois",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1718808",
+    "nome": "Sampaio",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1718840",
+    "nome": "Sandolândia",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1718865",
+    "nome": "Santa Fé do Araguaia",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1718881",
+    "nome": "Santa Maria do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1718899",
+    "nome": "Santa Rita do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1718907",
+    "nome": "Santa Rosa do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1719004",
+    "nome": "Santa Tereza do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1720002",
+    "nome": "Santa Terezinha do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1720655",
+    "nome": "Silvanópolis",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1720853",
+    "nome": "Sucupira",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1720101",
+    "nome": "São Bento do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1720150",
+    "nome": "São Félix do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1720200",
+    "nome": "São Miguel do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1720259",
+    "nome": "São Salvador do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1720309",
+    "nome": "São Sebastião do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1720499",
+    "nome": "São Valério",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1720804",
+    "nome": "Sítio Novo do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1708254",
+    "nome": "Tabocão",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1720903",
+    "nome": "Taguatinga",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1720937",
+    "nome": "Taipas do Tocantins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1720978",
+    "nome": "Talismã",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1721208",
+    "nome": "Tocantinópolis",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1721109",
+    "nome": "Tocantínia",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1721257",
+    "nome": "Tupirama",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1721307",
+    "nome": "Tupiratins",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1722081",
+    "nome": "Wanderlândia",
+    "uf": "TO"
+  },
+  {
+    "id_municipio": "1722107",
+    "nome": "Xambioá",
+    "uf": "TO"
+  }
+]
