@@ -131,6 +131,7 @@
     "TO-TER-06": ["Pecuária municipal (rebanho bovino)", "IBGE"],
     "TO-TER-07": ["Taxa de desocupação", "IBGE"],
     "TO-REC-02": ["Receita corrente líquida", "Tesouro Nacional"],
+    "TO-FIS-02": ["Despesa paga do Estado", "Portal da Transparência TO"],
     "TO-GER-01": ["Prefeitos e governador eleitos", "TSE"],
   };
   const STATUS_FONTE = {
