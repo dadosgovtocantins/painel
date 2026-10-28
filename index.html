@@ -8,7 +8,7 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'">
   <title>Painel TO em Dados</title>
   <!-- ?v= = início do SHA-256 do arquivo (evita .js/.css velho no cache); tests/ui/test_tela_municipio.py confere (painel-logica.js, painel.css e support.js) -->
-  <script src="./src/ui/painel-logica.js?v=07340222"></script>
+  <script src="./src/ui/painel-logica.js?v=036b2b45"></script>
   <script src="./support.js?v=a1d293c3"></script>
 </head>
 <body>
@@ -16,7 +16,7 @@
   <sc-helmet>
     <link rel="stylesheet" href="./src/ui/vendor/inter/fonts.css">
     <link rel="stylesheet" href="./src/ui/vendor/phosphor/style.css">
-    <link rel="stylesheet" href="./src/ui/css/painel.css?v=584b5dd1">
+    <link rel="stylesheet" href="./src/ui/css/painel.css?v=fb043454">
   </sc-helmet>
 
   <div class="painel" data-visao="{{ aba }}" data-tema="{{ tema }}" data-densidade="{{ densidade }}">
@@ -122,6 +122,7 @@
                 <sc-if value="{{ c.cat }}"><p class="c-cat"><i class="ph {{ c.catIcone }}" aria-hidden="true"></i>{{ c.cat }}</p></sc-if>
                 <h3 class="c-tit">{{ c.titulo }}</h3>
                 <p class="c-val"><span class="num {{ c.numClasse }}">{{ c.valorFmt }}</span><span class="uni">{{ c.unidade }}</span></p>
+                <sc-if value="{{ c.temLink }}"><p class="c-desc">{{ c.descricaoFmt }}</p><p class="c-nota">{{ c.notaFmt }}</p><a class="c-link" href="{{ c.linkUrl }}" target="_blank" rel="noopener noreferrer">Abrir na fonte oficial<i class="ph ph-arrow-square-out" aria-hidden="true"></i><span class="sr"> (abre em nova aba)</span></a></sc-if>
                 <sc-if value="{{ c.temVar }}"><p class="c-linha"><span class="var" data-aval="{{ c.aval }}"><i class="ph {{ c.seta }}" aria-hidden="true"></i>{{ c.varFmt }} <span class="vs">{{ c.vs }}</span><span class="sr">{{ c.leitura }}</span></span></p></sc-if>
                 <sc-if value="{{ c.temSerie }}"><svg class="spark" viewBox="0 0 72 24" preserveAspectRatio="none" aria-hidden="true"><polyline points="{{ c.pts }}"></polyline><path class="ponto" d="M{{ c.ux }},{{ c.uy }}h0"></path></svg></sc-if>
                 <p class="c-fonte">{{ c.fonteFmt }}</p>
@@ -161,7 +162,7 @@
           </details>
         </sc-if>
         <sc-if value="{{ situacaoIndisponivel }}"><p>Situação das fontes indisponível no momento.</p></sc-if>
-        <p>Projeto acadêmico independente de pesquisa e extensão (Unitins/PIBIEX), sem vínculo com o Governo do Estado do Tocantins. População: IBGE, Censo Demográfico 2022. Os indicadores vêm direto do IBGE, do Tesouro Nacional e do Portal da Transparência do Tocantins; “Não coletado” indica que a coleta automática ainda não existe. {{ rodapeDados }}</p>
+        <p>Projeto acadêmico independente de pesquisa e extensão (Unitins/PIBIEX), sem vínculo com o Governo do Estado do Tocantins. População: IBGE, Censo Demográfico 2022. Os indicadores vêm direto do IBGE, do Tesouro Nacional e do Portal da Transparência do Tocantins; Cartões de “Consulta externa” ou “Em implantação” levam à fonte oficial: o painel não coleta aquele dado (ainda). {{ rodapeDados }}</p>
         <p>Os nomes de prefeitos e do governador vêm da base pública oficial do Tribunal Superior Eleitoral (TSE) e se referem exclusivamente a ocupantes de cargos públicos eletivos, divulgados nos termos da Lei de Acesso à Informação (Lei nº 12.527/2011).</p>
       </footer>
     </div>

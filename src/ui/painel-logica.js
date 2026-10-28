@@ -44,16 +44,47 @@
     return { temSerie: true, pts: xy.map((p) => p[0].toFixed(1) + "," + p[1].toFixed(1)).join(" "), ux: ult[0].toFixed(1), uy: ult[1].toFixed(1) };
   }
 
+  // Cartão de link (task 37): fonte que o painel não coleta (ou ainda não coleta) mostra título, órgão, descrição e o
+  // link da consulta oficial, em vez de "Não coletado". O link só vale se for https em domínio .gov.br (ou tceto.tc.br,
+  // o do TCE-TO): qualquer outra coisa é descartada e o cartão cai para "Não coletado" (um erro de configuração visível).
+  // O endereço vai para o DOM como atributo, nunca como HTML.
+  const DOMINIOS_LINK = ["gov.br", "tceto.tc.br"]; // o domínio e os subdomínios dele (portaldocidadao.tceto.tc.br)
+  function linkValido(l) {
+    if (!l || typeof l !== "object" || typeof l.url !== "string" || l.url.length === 0 || l.url.length > 300) return null;
+    let u;
+    try { u = new URL(l.url); } catch (e) { return null; }
+    const h = u.hostname.toLowerCase();
+    if (u.protocol !== "https:" || u.username || u.password) return null;
+    if (!DOMINIOS_LINK.some((d) => h === d || h.endsWith("." + d))) return null;
+    const implantacao = l.tipo === "implantacao";
+    const tarefa = implantacao && Number.isInteger(l.tarefa) ? " (task " + l.tarefa + ")" : "";
+    return {
+      url: u.href,
+      tag: implantacao ? "Em implantação" + tarefa : "Consulta externa",
+      nota: implantacao ? "O painel ainda não coleta esta fonte: coleta em implantação." : "O painel não coleta esta fonte.",
+    };
+  }
+
+  function cartaoLink(ind, link) {
+    return {
+      ...ind, temVar: false, temSerie: false, temDado: false, temLink: true, numClasse: "num-vazio", unidade: "",
+      valorFmt: link.tag, fonteFmt: ind.orgao || ind.fonte, descricaoFmt: ind.descricao || "", notaFmt: link.nota, linkUrl: link.url,
+    };
+  }
+
   // serie: null = "Não coletado" (sem coletor); undefined = carregando; [] ou sem ponto válido = "Sem dado" (a fonte não tem).
+  // Com `link` válido e sem dado real, o cartão é de link (nunca "Não coletado", nem "Carregando").
   function cartao(ind, serie) {
-    const vazio = (valorFmt) => ({ ...ind, temVar: false, temSerie: false, temDado: false, numClasse: "num-vazio", unidade: "", valorFmt, fonteFmt: ind.fonte });
+    const vazio = (valorFmt) => ({ ...ind, temVar: false, temSerie: false, temDado: false, temLink: false, numClasse: "num-vazio", unidade: "", valorFmt, fonteFmt: ind.fonte });
+    const link = linkValido(ind.link);
+    const dado = Array.isArray(serie) ? dadoDe(ind, serie) : null;
+    if (link && !dado) return cartaoLink(ind, link);
     if (serie === undefined) return vazio("Carregando");
     if (serie === null) return vazio("Não coletado");
-    const dado = dadoDe(ind, serie);
     if (!dado) return vazio("Sem dado");
     const casas = ind.moeda ? (dado.unidade === "R$ mil" ? 0 : 1) : ind.casas || 0;
     return {
-      ...ind, temVar: false, temSerie: false, temDado: true, numClasse: "", unidade: dado.unidade,
+      ...ind, temVar: false, temSerie: false, temDado: true, temLink: false, numClasse: "", unidade: dado.unidade,
       valorFmt: ind.texto ? String(dado.v) : fmt(dado.v, casas), fonteFmt: ind.fonte + ", " + dado.per,
       ...(variacao(ind, dado) || {}), ...spark(dado.serie),
     };
@@ -61,11 +92,16 @@
 
   const montarBlocos = (blocos, achar) => blocos.map((b) => ({ ...b, itens: b.itens.map((i) => cartao(i, achar(i))) }));
 
+  // Y = cartões de dado (com valor, "Sem dado" ou "Não coletado"); cartões de link ficam fora de X e de Y e entram no sufixo.
   function aviso(blocos, erro) {
     if (erro) return erro;
     const cs = blocos.flatMap((b) => b.itens);
-    const n = cs.filter((c) => c.temDado).length;
-    return n ? n + " de " + cs.length + " indicadores com dados reais" : "Nenhum indicador coletado nesta visão";
+    const links = cs.filter((c) => c.temLink).length;
+    const dados = cs.filter((c) => !c.temLink);
+    const n = dados.filter((c) => c.temDado).length;
+    if (!dados.length && links) return links + (links === 1 ? " indicador" : " indicadores") + " para consultar na fonte oficial";
+    const base = n ? n + " de " + dados.length + " indicadores com dados reais" : "Nenhum indicador coletado nesta visão";
+    return links ? base + " · " + links + " para consultar na fonte oficial" : base;
   }
 
   // Telas de até L cartões. Tenta categorias inteiras; se isso exigir mais telas que o mínimo,
@@ -123,14 +159,14 @@
   // Situação das fontes (estado_fontes.json, escrito pelo robô diário) -> dados do rodapé, ou null se o arquivo não servir.
   // O texto de status e o ícone dizem a situação; a cor só reforça. Mensagens de erro vão como texto, nunca como HTML.
   const FONTES_ROTULO = {
-    "TO-TER-01": ["População residente", "IBGE"],
-    "TO-TER-02": ["PIB dos municípios", "IBGE"],
-    "TO-TER-03": ["PIB do estado", "IBGE"],
-    "TO-TER-04": ["Área territorial", "IBGE"],
-    "TO-TER-05": ["Produção agrícola municipal", "IBGE"],
-    "TO-TER-06": ["Pecuária municipal (rebanho bovino)", "IBGE"],
-    "TO-TER-07": ["Taxa de desocupação", "IBGE"],
-    "TO-REC-02": ["Receita corrente líquida", "Tesouro Nacional"],
+    "TO-ECO-03": ["População residente", "IBGE"],
+    "TO-ECO-01": ["PIB dos municípios", "IBGE"],
+    "TO-ECO-02": ["PIB do estado", "IBGE"],
+    "TO-TER-02": ["Área territorial", "IBGE"],
+    "TO-AGR-01": ["Produção agrícola municipal", "IBGE"],
+    "TO-AGR-02": ["Pecuária municipal (rebanho bovino)", "IBGE"],
+    "TO-TRA-01": ["Taxa de desocupação", "IBGE"],
+    "TO-FIS-04": ["Receita corrente líquida", "Tesouro Nacional"],
     "TO-FIS-02": ["Despesa paga do Estado", "Portal da Transparência TO"],
     "TO-GER-01": ["Prefeitos e governador eleitos", "TSE"],
   };

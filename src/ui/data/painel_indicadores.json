@@ -1,5 +1,5 @@
 {
- "_aviso": "Catálogo dos indicadores do painel: sem valores. `ind` liga o cartão ao indicador coletado em painel_dados.json (gerado por scripts/exportar_painel.py); sem `ind` o cartão aparece como 'Não coletado'. `moeda`: base R$ mil, escolhe bi/mi/mil pelo tamanho.",
+ "_aviso": "Catálogo dos indicadores do painel: sem valores. `ind` liga o cartão ao indicador coletado em painel_dados.json (gerado por scripts/exportar_painel.py); sem `ind` o cartão aparece como 'Não coletado'. `moeda`: base R$ mil, escolhe bi/mi/mil pelo tamanho. Task 37: cartão sem `ind` ativo traz `link` ({id_fonte, url, tipo: externa|implantacao, tarefa}) + `orgao` e `descricao`; o painel mostra a consulta oficial em vez de \"Não coletado\" (URL https em .gov.br ou tceto.tc.br, verificada no Chrome em 28/10/2026).",
  "municipio": {
   "blocos": [
    {
@@ -20,7 +20,14 @@
       "titulo": "Empresas ativas",
       "unidade": "empresas",
       "sentido": "maior_melhor",
-      "fonte": "Mapa de Empresas"
+      "fonte": "Mapa de Empresas",
+      "orgao": "MDIC (Mapa de Empresas)",
+      "descricao": "Empresas abertas, fechadas e em atividade, por município.",
+      "link": {
+       "id_fonte": "TO-EMP-01",
+       "url": "https://www.gov.br/empresas-e-negocios/pt-br/mapa-de-empresas/painel-mapa-de-empresas",
+       "tipo": "externa"
+      }
      },
      {
       "id": "saldo_caged",
@@ -28,7 +35,15 @@
       "unidade": "vagas",
       "sentido": "maior_melhor",
       "fonte": "Novo CAGED",
-      "varUni": "vagas"
+      "varUni": "vagas",
+      "orgao": "MTE (Novo CAGED)",
+      "descricao": "Saldo de empregos formais: admissões menos desligamentos.",
+      "link": {
+       "id_fonte": "TO-TRA-02",
+       "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho",
+       "tipo": "implantacao",
+       "tarefa": 43
+      }
      },
      {
       "id": "exportacoes",
@@ -36,7 +51,15 @@
       "unidade": "US$ mi",
       "casas": 1,
       "sentido": "maior_melhor",
-      "fonte": "Comex Stat"
+      "fonte": "Comex Stat",
+      "orgao": "MDIC (Comex Stat)",
+      "descricao": "Exportações de cada município, em dólares (valor FOB).",
+      "link": {
+       "id_fonte": "TO-ECO-04",
+       "url": "https://comexstat.mdic.gov.br/pt/municipio",
+       "tipo": "implantacao",
+       "tarefa": 39
+      }
      }
     ]
    },
@@ -82,15 +105,15 @@
       "unidade": "CAPAG",
       "sentido": "maior_melhor",
       "fonte": "Tesouro Nacional",
-      "texto": true
-     },
-     {
-      "id": "convenios",
-      "titulo": "Convênios recebidos",
-      "unidade": "R$ mi",
-      "casas": 1,
-      "sentido": "neutro",
-      "fonte": "Transferegov"
+      "texto": true,
+      "orgao": "Tesouro Nacional (CAPAG)",
+      "descricao": "Conceito de capacidade de pagamento de cada município.",
+      "link": {
+       "id_fonte": "TO-FIS-06",
+       "url": "https://www.tesourotransparente.gov.br/temas/estados-e-municipios/capacidade-de-pagamento-capag",
+       "tipo": "implantacao",
+       "tarefa": 42
+      }
      }
     ]
    },
@@ -104,16 +127,15 @@
       "titulo": "Leitos SUS",
       "unidade": "leitos",
       "sentido": "maior_melhor",
-      "fonte": "CNES/DATASUS"
-     },
-     {
-      "id": "cobertura_vacinal",
-      "titulo": "Cobertura vacinal",
-      "unidade": "%",
-      "casas": 1,
-      "sentido": "maior_melhor",
-      "fonte": "PNI/DATASUS",
-      "varUni": "p.p."
+      "fonte": "CNES/DATASUS",
+      "orgao": "DATASUS (CNES)",
+      "descricao": "Leitos de internação do SUS em cada município.",
+      "link": {
+       "id_fonte": "TO-SAU-01",
+       "url": "https://cnes.datasus.gov.br/",
+       "tipo": "implantacao",
+       "tarefa": 40
+      }
      },
      {
       "id": "mortalidade_infantil",
@@ -121,7 +143,15 @@
       "unidade": "por mil nascidos vivos",
       "casas": 1,
       "sentido": "menor_melhor",
-      "fonte": "SIM/SINASC"
+      "fonte": "SIM/SINASC",
+      "orgao": "DATASUS (SIM e SINASC)",
+      "descricao": "Óbitos de menores de 1 ano por mil nascidos vivos.",
+      "link": {
+       "id_fonte": "TO-SAU-03",
+       "url": "https://tabnet.datasus.gov.br/cgi/deftohtm.exe?sim/cnv/inf10uf.def",
+       "tipo": "implantacao",
+       "tarefa": 44
+      }
      }
     ]
    },
@@ -138,7 +168,15 @@
       "sentido": "maior_melhor",
       "fonte": "INEP",
       "varUni": "pt",
-      "passo": 2
+      "passo": 2,
+      "orgao": "INEP (Ideb)",
+      "descricao": "Índice de Desenvolvimento da Educação Básica, de 0 a 10.",
+      "link": {
+       "id_fonte": "TO-EDU-01",
+       "url": "https://www.gov.br/inep/pt-br/areas-de-atuacao/pesquisas-estatisticas-e-indicadores/ideb",
+       "tipo": "implantacao",
+       "tarefa": 41
+      }
      },
      {
       "id": "repasses_fnde",
@@ -146,7 +184,15 @@
       "unidade": "R$ mi",
       "casas": 1,
       "sentido": "neutro",
-      "fonte": "FNDE"
+      "fonte": "FNDE",
+      "orgao": "FNDE",
+      "descricao": "Repasses do FNDE (PNAE, PNATE, FUNDEB) a cada município.",
+      "link": {
+       "id_fonte": "TO-EDU-06",
+       "url": "https://www.gov.br/fnde/pt-br/acesso-a-informacao/convenios-e-transferencias",
+       "tipo": "implantacao",
+       "tarefa": 45
+      }
      }
     ]
    }
@@ -224,7 +270,14 @@
       "casas": 1,
       "sentido": "maior_melhor",
       "fonte": "STN/SICONFI",
-      "varUni": "p.p."
+      "varUni": "p.p.",
+      "orgao": "Tesouro Nacional (SICONFI)",
+      "descricao": "Execução orçamentária do estado nos relatórios RREO e na DCA.",
+      "link": {
+       "id_fonte": "TO-FIS-04",
+       "url": "https://siconfi.tesouro.gov.br/siconfi/index.jsf",
+       "tipo": "externa"
+      }
      },
      {
       "titulo": "Despesa com pessoal (LRF)",
@@ -232,7 +285,15 @@
       "casas": 1,
       "sentido": "menor_melhor",
       "fonte": "STN/SICONFI",
-      "varUni": "p.p."
+      "varUni": "p.p.",
+      "orgao": "Tesouro Nacional (SICONFI)",
+      "descricao": "Despesa com pessoal como % da receita corrente líquida (LRF).",
+      "link": {
+       "id_fonte": "TO-FIS-05",
+       "url": "https://siconfi.tesouro.gov.br/siconfi/index.jsf",
+       "tipo": "implantacao",
+       "tarefa": 42
+      }
      }
     ]
    },
@@ -245,22 +306,30 @@
       "titulo": "Leitos SUS",
       "unidade": "leitos",
       "sentido": "maior_melhor",
-      "fonte": "CNES/DATASUS"
-     },
-     {
-      "titulo": "Cobertura vacinal",
-      "unidade": "%",
-      "casas": 1,
-      "sentido": "maior_melhor",
-      "fonte": "PNI/DATASUS",
-      "varUni": "p.p."
+      "fonte": "CNES/DATASUS",
+      "orgao": "DATASUS (CNES)",
+      "descricao": "Leitos de internação do SUS em cada município.",
+      "link": {
+       "id_fonte": "TO-SAU-01",
+       "url": "https://cnes.datasus.gov.br/",
+       "tipo": "implantacao",
+       "tarefa": 40
+      }
      },
      {
       "titulo": "Mortalidade infantil",
       "unidade": "por mil nascidos vivos",
       "casas": 1,
       "sentido": "menor_melhor",
-      "fonte": "SIM/SINASC"
+      "fonte": "SIM/SINASC",
+      "orgao": "DATASUS (SIM e SINASC)",
+      "descricao": "Óbitos de menores de 1 ano por mil nascidos vivos.",
+      "link": {
+       "id_fonte": "TO-SAU-03",
+       "url": "https://tabnet.datasus.gov.br/cgi/deftohtm.exe?sim/cnv/inf10uf.def",
+       "tipo": "implantacao",
+       "tarefa": 44
+      }
      }
     ]
    },
@@ -276,14 +345,30 @@
       "sentido": "maior_melhor",
       "fonte": "INEP",
       "varUni": "pt",
-      "passo": 2
+      "passo": 2,
+      "orgao": "INEP (Ideb)",
+      "descricao": "Índice de Desenvolvimento da Educação Básica, de 0 a 10.",
+      "link": {
+       "id_fonte": "TO-EDU-01",
+       "url": "https://www.gov.br/inep/pt-br/areas-de-atuacao/pesquisas-estatisticas-e-indicadores/ideb",
+       "tipo": "implantacao",
+       "tarefa": 41
+      }
      },
      {
       "titulo": "Repasses do FNDE",
       "unidade": "R$ mi",
       "casas": 1,
       "sentido": "neutro",
-      "fonte": "FNDE"
+      "fonte": "FNDE",
+      "orgao": "FNDE",
+      "descricao": "Repasses do FNDE (PNAE, PNATE, FUNDEB) a cada município.",
+      "link": {
+       "id_fonte": "TO-EDU-06",
+       "url": "https://www.gov.br/fnde/pt-br/acesso-a-informacao/convenios-e-transferencias",
+       "tipo": "implantacao",
+       "tarefa": 45
+      }
      }
     ]
    },
@@ -295,37 +380,62 @@
      {
       "titulo": "Ocorrências de segurança pública",
       "unidade": "casos",
-      "fonte": "SSP-TO"
+      "fonte": "SSP-TO",
+      "orgao": "SSP-TO",
+      "descricao": "Registros agregados de ocorrências de segurança pública.",
+      "link": {
+       "id_fonte": "TO-SEG-01",
+       "url": "https://www.to.gov.br/ssp",
+       "tipo": "externa"
+      }
      },
      {
       "titulo": "Fluxo e oferta turística",
       "unidade": "visitantes",
-      "fonte": "ADETUC"
+      "fonte": "ADETUC",
+      "orgao": "SECTUR-TO (Observatório do Turismo)",
+      "descricao": "Fluxo e oferta turística do Estado.",
+      "link": {
+       "id_fonte": "TO-TUR-01",
+       "url": "https://observatorio.turismo.to.gov.br/",
+       "tipo": "externa"
+      }
      },
      {
       "titulo": "Rodovias e obras estaduais",
       "unidade": "km",
-      "fonte": "AGETO"
+      "fonte": "AGETO",
+      "orgao": "AGETO-TO",
+      "descricao": "Rodovias e obras estaduais.",
+      "link": {
+       "id_fonte": "TO-INF-01",
+       "url": "https://www.to.gov.br/ageto",
+       "tipo": "externa"
+      }
      },
      {
       "titulo": "Ouvidoria e controle interno",
       "unidade": "manifestações",
-      "fonte": "CGE-TO"
-     },
-     {
-      "titulo": "Serviços públicos digitais",
-      "unidade": "serviços",
-      "fonte": "ATI-TO"
-     },
-     {
-      "titulo": "Chamados de TI estadual",
-      "unidade": "chamados",
-      "fonte": "ATI-TO"
+      "fonte": "CGE-TO",
+      "orgao": "CGE-TO",
+      "descricao": "Ouvidoria e controle interno: relatórios de gestão.",
+      "link": {
+       "id_fonte": "TO-CGE-01",
+       "url": "https://www.to.gov.br/cge",
+       "tipo": "externa"
+      }
      },
      {
       "titulo": "Atos oficiais publicados",
       "unidade": "edições",
-      "fonte": "Diário Oficial do TO"
+      "fonte": "Diário Oficial do TO",
+      "orgao": "Diário Oficial do Estado",
+      "descricao": "Atos oficiais publicados em cada edição.",
+      "link": {
+       "id_fonte": "TO-ATO-01",
+       "url": "https://diariooficial.to.gov.br/",
+       "tipo": "externa"
+      }
      }
     ]
    }
@@ -407,7 +517,15 @@
      "casas": 1,
      "sentido": "maior_melhor",
      "fonte": "INEP",
-     "passo": 2
+     "passo": 2,
+     "orgao": "INEP (Ideb)",
+     "descricao": "Índice de Desenvolvimento da Educação Básica, de 0 a 10.",
+     "link": {
+      "id_fonte": "TO-EDU-01",
+      "url": "https://www.gov.br/inep/pt-br/areas-de-atuacao/pesquisas-estatisticas-e-indicadores/ideb",
+      "tipo": "implantacao",
+      "tarefa": 41
+     }
     },
     {
      "titulo": "SAEB: proficiência em LP e Matemática",
@@ -415,20 +533,43 @@
      "casas": 1,
      "sentido": "maior_melhor",
      "fonte": "INEP",
-     "passo": 2
+     "passo": 2,
+     "orgao": "INEP (Saeb)",
+     "descricao": "Proficiência em Língua Portuguesa e Matemática.",
+     "link": {
+      "id_fonte": "TO-EDU-02",
+      "url": "https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/saeb",
+      "tipo": "externa"
+     }
     },
     {
      "titulo": "Censo Escolar: matrículas",
      "unidade": "matrículas",
      "sentido": "neutro",
-     "fonte": "INEP"
+     "fonte": "INEP",
+     "orgao": "INEP (Censo Escolar)",
+     "descricao": "Matrículas, docentes e infraestrutura das escolas.",
+     "link": {
+      "id_fonte": "TO-EDU-03",
+      "url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/microdados/censo-escolar",
+      "tipo": "implantacao",
+      "tarefa": 41
+     }
     },
     {
      "titulo": "Taxa de aprovação",
      "unidade": "%",
      "casas": 1,
      "sentido": "maior_melhor",
-     "fonte": "INEP"
+     "fonte": "INEP",
+     "orgao": "INEP (Indicadores educacionais)",
+     "descricao": "Taxas de rendimento escolar e de distorção idade-série.",
+     "link": {
+      "id_fonte": "TO-EDU-04",
+      "url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais",
+      "tipo": "implantacao",
+      "tarefa": 41
+     }
     }
    ]
   },
@@ -447,7 +588,15 @@
      "titulo": "Repasses FNDE (PNAE, PNATE, FUNDEB)",
      "unidade": "R$ mil",
      "sentido": "neutro",
-     "fonte": "FNDE"
+     "fonte": "FNDE",
+     "orgao": "FNDE",
+     "descricao": "Repasses do FNDE (PNAE, PNATE, FUNDEB) a cada município.",
+     "link": {
+      "id_fonte": "TO-EDU-06",
+      "url": "https://www.gov.br/fnde/pt-br/acesso-a-informacao/convenios-e-transferencias",
+      "tipo": "implantacao",
+      "tarefa": 45
+     }
     }
    ]
   },
@@ -466,7 +615,15 @@
      "titulo": "Saldo de empregos formais",
      "unidade": "postos",
      "sentido": "maior_melhor",
-     "fonte": "Novo CAGED"
+     "fonte": "Novo CAGED",
+     "orgao": "MTE (Novo CAGED)",
+     "descricao": "Saldo de empregos formais: admissões menos desligamentos.",
+     "link": {
+      "id_fonte": "TO-TRA-02",
+      "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho",
+      "tipo": "implantacao",
+      "tarefa": 43
+     }
     }
    ]
   },
@@ -485,7 +642,15 @@
      "titulo": "Exportações municipais",
      "unidade": "US$ mil",
      "sentido": "maior_melhor",
-     "fonte": "Comex Stat"
+     "fonte": "Comex Stat",
+     "orgao": "MDIC (Comex Stat)",
+     "descricao": "Exportações de cada município, em dólares (valor FOB).",
+     "link": {
+      "id_fonte": "TO-ECO-04",
+      "url": "https://comexstat.mdic.gov.br/pt/municipio",
+      "tipo": "implantacao",
+      "tarefa": 39
+     }
     }
    ]
   },
@@ -504,7 +669,14 @@
      "titulo": "Empresas abertas e fechadas",
      "unidade": "empresas",
      "sentido": "maior_melhor",
-     "fonte": "Mapa de Empresas"
+     "fonte": "Mapa de Empresas",
+     "orgao": "MDIC (Mapa de Empresas)",
+     "descricao": "Empresas abertas, fechadas e em atividade, por município.",
+     "link": {
+      "id_fonte": "TO-EMP-01",
+      "url": "https://www.gov.br/empresas-e-negocios/pt-br/mapa-de-empresas/painel-mapa-de-empresas",
+      "tipo": "externa"
+     }
     }
    ]
   },
@@ -515,29 +687,38 @@
    "maturidade": {
     "nivel": "Avançado",
     "pct": 100,
-    "fontes": "3 fontes abertas · 0 apenas-link (grau A)",
-    "desc": "Bases da saúde pública (CNES, PNI, SIM/SINASC, SIA/SIH) via PySUS e FTP oficial."
+    "fontes": "2 fontes abertas · 0 apenas-link (grau A)",
+    "desc": "Bases da saúde pública (CNES, SIM/SINASC, SIA/SIH) via PySUS e FTP oficial."
    },
    "itens": [
     {
      "titulo": "Leitos (SIA/SIH/CNES)",
      "unidade": "leitos",
      "sentido": "maior_melhor",
-     "fonte": "CNES/DATASUS"
-    },
-    {
-     "titulo": "Cobertura vacinal",
-     "unidade": "%",
-     "casas": 1,
-     "sentido": "maior_melhor",
-     "fonte": "PNI/DATASUS"
+     "fonte": "CNES/DATASUS",
+     "orgao": "DATASUS (CNES)",
+     "descricao": "Leitos de internação do SUS em cada município.",
+     "link": {
+      "id_fonte": "TO-SAU-01",
+      "url": "https://cnes.datasus.gov.br/",
+      "tipo": "implantacao",
+      "tarefa": 40
+     }
     },
     {
      "titulo": "Mortalidade infantil",
      "unidade": "por mil nascidos vivos",
      "casas": 1,
      "sentido": "menor_melhor",
-     "fonte": "SIM/SINASC"
+     "fonte": "SIM/SINASC",
+     "orgao": "DATASUS (SIM e SINASC)",
+     "descricao": "Óbitos de menores de 1 ano por mil nascidos vivos.",
+     "link": {
+      "id_fonte": "TO-SAU-03",
+      "url": "https://tabnet.datasus.gov.br/cgi/deftohtm.exe?sim/cnv/inf10uf.def",
+      "tipo": "implantacao",
+      "tarefa": 44
+     }
     }
    ]
   },
@@ -564,21 +745,44 @@
      "unidade": "situação",
      "sentido": "neutro",
      "fonte": "STN/SICONFI",
-     "texto": true
+     "texto": true,
+     "orgao": "Tesouro Nacional (SICONFI)",
+     "descricao": "Despesa com pessoal como % da receita corrente líquida (LRF).",
+     "link": {
+      "id_fonte": "TO-FIS-05",
+      "url": "https://siconfi.tesouro.gov.br/siconfi/index.jsf",
+      "tipo": "implantacao",
+      "tarefa": 42
+     }
     },
     {
      "titulo": "Execução orçamentária (DCA/RREO)",
      "unidade": "R$ bi",
      "casas": 1,
      "sentido": "neutro",
-     "fonte": "STN/SICONFI"
+     "fonte": "STN/SICONFI",
+     "orgao": "Tesouro Nacional (SICONFI)",
+     "descricao": "Execução orçamentária do estado nos relatórios RREO e na DCA.",
+     "link": {
+      "id_fonte": "TO-FIS-04",
+      "url": "https://siconfi.tesouro.gov.br/siconfi/index.jsf",
+      "tipo": "externa"
+     }
     },
     {
      "titulo": "Capacidade de pagamento",
      "unidade": "CAPAG",
      "sentido": "maior_melhor",
      "fonte": "Tesouro Nacional",
-     "texto": true
+     "texto": true,
+     "orgao": "Tesouro Nacional (CAPAG)",
+     "descricao": "Conceito de capacidade de pagamento de cada município.",
+     "link": {
+      "id_fonte": "TO-FIS-06",
+      "url": "https://www.tesourotransparente.gov.br/temas/estados-e-municipios/capacidade-de-pagamento-capag",
+      "tipo": "implantacao",
+      "tarefa": 42
+     }
     }
    ]
   },
@@ -590,13 +794,20 @@
     "nivel": "Inexistente",
     "pct": 0,
     "fontes": "0 fontes abertas · 3 apenas-link (grau D)",
-    "desc": "Portal em Vaadin 8.9.2 sem API REST/JSON pública. A cobertura fiscal do estado vem do SICONFI/STN."
+    "desc": "Portal da Transparência (Vaadin) sem API pública; a despesa paga vem do CSV exportado da consulta por função (task 47) e as demais consultas seguem como link."
    },
    "itens": [
     {
      "titulo": "Receitas públicas estaduais",
      "unidade": "R$",
-     "fonte": "Portal da Transparência TO"
+     "fonte": "Portal da Transparência TO",
+     "orgao": "SEFAZ-TO (Portal da Transparência)",
+     "descricao": "Receitas arrecadadas pelo Estado, por fonte e categoria.",
+     "link": {
+      "id_fonte": "TO-FIS-01",
+      "url": "https://transparencia.to.gov.br/PortalTransparencia/#!receitas",
+      "tipo": "externa"
+     }
     },
     {
      "titulo": "Despesa paga no ano",
@@ -608,7 +819,14 @@
     {
      "titulo": "Atos oficiais publicados",
      "unidade": "edições",
-     "fonte": "Diário Oficial do TO"
+     "fonte": "Diário Oficial do TO",
+     "orgao": "Diário Oficial do Estado",
+     "descricao": "Atos oficiais publicados em cada edição.",
+     "link": {
+      "id_fonte": "TO-ATO-01",
+      "url": "https://diariooficial.to.gov.br/",
+      "tipo": "externa"
+     }
     }
    ]
   },
@@ -624,9 +842,16 @@
    },
    "itens": [
     {
-     "titulo": "Boletim epidemiológico estadual",
+     "titulo": "Informações de saúde do Estado",
      "unidade": "boletins",
-     "fonte": "SES-TO"
+     "fonte": "SES-TO",
+     "orgao": "SES-TO",
+     "descricao": "Site da Secretaria da Saúde do Tocantins (sem página direta de boletim verificada).",
+     "link": {
+      "id_fonte": "TO-SAU-04",
+      "url": "https://www.to.gov.br/saude",
+      "tipo": "externa"
+     }
     }
    ]
   },
@@ -644,7 +869,14 @@
     {
      "titulo": "Programas educacionais do estado",
      "unidade": "programas",
-     "fonte": "SEDUC-TO"
+     "fonte": "SEDUC-TO",
+     "orgao": "SEDUC-TO",
+     "descricao": "Divulgações e programas educacionais do Estado.",
+     "link": {
+      "id_fonte": "TO-EDU-05",
+      "url": "https://www.to.gov.br/seduc",
+      "tipo": "externa"
+     }
     }
    ]
   },
@@ -656,20 +888,34 @@
     "nivel": "Inexistente",
     "pct": 0,
     "fontes": "0 fontes abertas · 2 apenas-link (grau D)",
-    "desc": "Raspagem automatizada em Python no portal e no boletim do TCE-TO (pautas de julgamento e alertas da LRF)."
+    "desc": "Portal do Cidadão sem API pública; o painel só aponta para as consultas (prestação de contas e alertas da LRF dos municípios)."
    },
    "itens": [
     {
      "titulo": "Prestação de contas municipais",
      "unidade": "municípios auditados",
      "sentido": "neutro",
-     "fonte": "TCE-TO (raspagem)"
+     "fonte": "TCE-TO (raspagem)",
+     "orgao": "TCE-TO (Portal do Cidadão)",
+     "descricao": "Receitas, despesas e licitações dos municípios.",
+     "link": {
+      "id_fonte": "TO-CTL-01",
+      "url": "https://portaldocidadao.tceto.tc.br/",
+      "tipo": "externa"
+     }
     },
     {
      "titulo": "Alertas da LRF monitorados",
      "unidade": "alertas",
      "sentido": "neutro",
-     "fonte": "TCE-TO (raspagem)"
+     "fonte": "TCE-TO (raspagem)",
+     "orgao": "TCE-TO (Portal do Cidadão)",
+     "descricao": "Indicadores da LRF dos municípios.",
+     "link": {
+      "id_fonte": "TO-CTL-02",
+      "url": "https://portaldocidadao.tceto.tc.br/",
+      "tipo": "externa"
+     }
     }
    ]
   },
@@ -680,22 +926,22 @@
    "maturidade": {
     "nivel": "Inexistente",
     "pct": 0,
-    "fontes": "0 fontes abertas · 2 apenas-link (grau D)",
-    "desc": "Raspagem automatizada em Python no portal SEAGRO/Lab63 (cotações da CEASA e boletins agrícolas)."
+    "fontes": "0 fontes abertas · 1 apenas-link (grau D)",
+    "desc": "Sem API pública; o painel só aponta para o site da secretaria. O Lab63 (cotações e boletins) não pôde ser verificado em 28/10/2026 e o robots.txt dele proíbe coleta automática."
    },
    "itens": [
     {
-     "titulo": "Boletins de safra (Lab63)",
-     "unidade": "boletins",
+     "titulo": "Informações do agronegócio do Estado",
+     "fonte": "SEAGRO-TO",
+     "unidade": "",
      "sentido": "neutro",
-     "fonte": "SEAGRO-TO (raspagem)"
-    },
-    {
-     "titulo": "Cotações do agronegócio",
-     "unidade": "R$/saco (CEASA)",
-     "casas": 2,
-     "sentido": "neutro",
-     "fonte": "SEAGRO-TO (raspagem)"
+     "orgao": "SEAGRO-TO",
+     "descricao": "Site da Secretaria da Agricultura e Pecuária do Tocantins (sem página direta verificada).",
+     "link": {
+      "id_fonte": "TO-AGR-03",
+      "url": "https://www.to.gov.br/seagro",
+      "tipo": "externa"
+     }
     }
    ]
   },
@@ -707,7 +953,7 @@
     "nivel": "Inexistente",
     "pct": 0,
     "fontes": "0 fontes abertas · 2 apenas-link (grau D)",
-    "desc": "Raspagem automatizada em Python no Portal da Transparência SIAFE (execução orçamentária e relatórios da CGE)."
+    "desc": "Consultas no Portal da Transparência (SIAFE) e no site da CGE, sem API pública; o painel só aponta para elas."
    },
    "itens": [
     {
@@ -715,13 +961,27 @@
      "unidade": "R$ bi",
      "casas": 1,
      "sentido": "neutro",
-     "fonte": "CGE-TO (raspagem)"
+     "fonte": "CGE-TO (raspagem)",
+     "orgao": "CGE-TO (Portal da Transparência)",
+     "descricao": "Execução orçamentária e financeira do Estado.",
+     "link": {
+      "id_fonte": "TO-FIS-03",
+      "url": "https://transparencia.to.gov.br/PortalTransparencia/#!despesas",
+      "tipo": "externa"
+     }
     },
     {
      "titulo": "Relatórios de gestão e ouvidoria",
      "unidade": "relatórios",
      "sentido": "neutro",
-     "fonte": "CGE-TO (raspagem)"
+     "fonte": "CGE-TO (raspagem)",
+     "orgao": "CGE-TO",
+     "descricao": "Ouvidoria e controle interno: relatórios de gestão.",
+     "link": {
+      "id_fonte": "TO-CGE-01",
+      "url": "https://www.to.gov.br/cge",
+      "tipo": "externa"
+     }
     }
    ]
   }
