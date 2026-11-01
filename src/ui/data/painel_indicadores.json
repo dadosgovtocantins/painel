@@ -162,21 +162,14 @@
     "itens": [
      {
       "id": "ideb_ai",
-      "titulo": "IDEB (anos iniciais)",
+      "titulo": "IDEB, anos iniciais (rede pública)",
       "unidade": "nota",
       "casas": 1,
       "sentido": "maior_melhor",
-      "fonte": "INEP",
+      "fonte": "INEP (rede pública)",
       "varUni": "pt",
       "passo": 2,
-      "orgao": "INEP (Ideb)",
-      "descricao": "Índice de Desenvolvimento da Educação Básica, de 0 a 10.",
-      "link": {
-       "id_fonte": "TO-EDU-01",
-       "url": "https://www.gov.br/inep/pt-br/areas-de-atuacao/pesquisas-estatisticas-e-indicadores/ideb",
-       "tipo": "implantacao",
-       "tarefa": 41
-      }
+      "ind": "ideb_anos_iniciais"
      },
      {
       "id": "repasses_fnde",
@@ -339,21 +332,14 @@
     "icone": "ph-graduation-cap",
     "itens": [
      {
-      "titulo": "IDEB (anos iniciais)",
+      "titulo": "IDEB, anos iniciais (rede pública)",
       "unidade": "nota",
       "casas": 1,
       "sentido": "maior_melhor",
-      "fonte": "INEP",
+      "fonte": "INEP (rede pública)",
       "varUni": "pt",
       "passo": 2,
-      "orgao": "INEP (Ideb)",
-      "descricao": "Índice de Desenvolvimento da Educação Básica, de 0 a 10.",
-      "link": {
-       "id_fonte": "TO-EDU-01",
-       "url": "https://www.gov.br/inep/pt-br/areas-de-atuacao/pesquisas-estatisticas-e-indicadores/ideb",
-       "tipo": "implantacao",
-       "tarefa": 41
-      }
+      "ind": "ideb_anos_iniciais"
      },
      {
       "titulo": "Repasses do FNDE",
@@ -512,20 +498,14 @@
    },
    "itens": [
     {
-     "titulo": "IDEB (redes estadual e municipal)",
+     "titulo": "IDEB, anos iniciais (rede pública)",
      "unidade": "nota",
      "casas": 1,
      "sentido": "maior_melhor",
-     "fonte": "INEP",
+     "fonte": "INEP (rede pública)",
+     "varUni": "pt",
      "passo": 2,
-     "orgao": "INEP (Ideb)",
-     "descricao": "Índice de Desenvolvimento da Educação Básica, de 0 a 10.",
-     "link": {
-      "id_fonte": "TO-EDU-01",
-      "url": "https://www.gov.br/inep/pt-br/areas-de-atuacao/pesquisas-estatisticas-e-indicadores/ideb",
-      "tipo": "implantacao",
-      "tarefa": 41
-     }
+     "ind": "ideb_anos_iniciais"
     },
     {
      "titulo": "SAEB: proficiência em LP e Matemática",
@@ -543,33 +523,20 @@
      }
     },
     {
-     "titulo": "Censo Escolar: matrículas",
+     "titulo": "Matrículas na educação básica (todas as redes)",
      "unidade": "matrículas",
      "sentido": "neutro",
-     "fonte": "INEP",
-     "orgao": "INEP (Censo Escolar)",
-     "descricao": "Matrículas, docentes e infraestrutura das escolas.",
-     "link": {
-      "id_fonte": "TO-EDU-03",
-      "url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/microdados/censo-escolar",
-      "tipo": "implantacao",
-      "tarefa": 41
-     }
+     "fonte": "INEP (Censo Escolar)",
+     "ind": "matriculas_educacao_basica"
     },
     {
-     "titulo": "Taxa de aprovação",
+     "titulo": "Taxa de aprovação, anos iniciais (rede pública)",
      "unidade": "%",
      "casas": 1,
      "sentido": "maior_melhor",
-     "fonte": "INEP",
-     "orgao": "INEP (Indicadores educacionais)",
-     "descricao": "Taxas de rendimento escolar e de distorção idade-série.",
-     "link": {
-      "id_fonte": "TO-EDU-04",
-      "url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais",
-      "tipo": "implantacao",
-      "tarefa": 41
-     }
+     "fonte": "INEP (rede pública)",
+     "varUni": "p.p.",
+     "ind": "taxa_aprovacao_anos_iniciais"
     }
    ]
   },
