@@ -168,6 +168,9 @@
     "TO-TRA-01": ["Taxa de desocupação", "IBGE"],
     "TO-FIS-04": ["Receita corrente líquida", "Tesouro Nacional"],
     "TO-FIS-02": ["Despesa paga do Estado", "Portal da Transparência TO"],
+    "TO-EDU-01": ["IDEB, anos iniciais (rede pública)", "Inep"],
+    "TO-EDU-03": ["Matrículas na educação básica", "Inep"],
+    "TO-EDU-04": ["Taxa de aprovação, anos iniciais", "Inep"],
     "TO-GER-01": ["Prefeitos e governador eleitos", "TSE"],
   };
   const STATUS_FONTE = {
