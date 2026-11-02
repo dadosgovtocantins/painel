@@ -171,6 +171,7 @@
     "TO-EDU-01": ["IDEB, anos iniciais (rede pública)", "Inep"],
     "TO-EDU-03": ["Matrículas na educação básica", "Inep"],
     "TO-EDU-04": ["Taxa de aprovação, anos iniciais", "Inep"],
+    "TO-SAU-01": ["Leitos SUS de internação", "DATASUS (CNES)"],
     "TO-GER-01": ["Prefeitos e governador eleitos", "TSE"],
   };
   const STATUS_FONTE = {
