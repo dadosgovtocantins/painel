@@ -16,7 +16,9 @@
     if (!pts.length) return null;
     const [per, v] = pts[pts.length - 1], ant = pts[pts.length - 2];
     const { k, unidade } = ind.moeda ? escalaMoeda(v) : { k: 1, unidade: ind.unidade || "" };
-    return { v: v * k, per, ant: ant ? ant[1] * k : null, perAnt: ant ? ant[0] : null, serie: pts.map((p) => p[1] * k), unidade };
+    // Terceiro elemento do ponto (task 44): texto curto ao lado do valor, ex.: "56 óbitos em 4.713 nascidos".
+    const ultimo = pts[pts.length - 1], detalhe = typeof ultimo[2] === "string" ? ultimo[2].slice(0, 80) : "";
+    return { v: v * k, per, ant: ant ? ant[1] * k : null, perAnt: ant ? ant[0] : null, serie: pts.map((p) => p[1] * k), unidade, detalhe };
   }
 
   function variacao(ind, dado) {
@@ -85,7 +87,7 @@
     const casas = ind.moeda ? (dado.unidade === "R$ mil" ? 0 : 1) : ind.casas || 0;
     return {
       ...ind, temVar: false, temSerie: false, temDado: true, temLink: false, numClasse: "", unidade: dado.unidade,
-      valorFmt: ind.texto ? String(dado.v) : fmt(dado.v, casas), fonteFmt: ind.fonte + ", " + dado.per,
+      valorFmt: ind.texto ? String(dado.v) : fmt(dado.v, casas), fonteFmt: ind.fonte + ", " + dado.per + (dado.detalhe ? " · " + dado.detalhe : ""),
       ...(variacao(ind, dado) || {}), ...spark(dado.serie),
     };
   }
@@ -172,6 +174,7 @@
     "TO-EDU-03": ["Matrículas na educação básica", "Inep"],
     "TO-EDU-04": ["Taxa de aprovação, anos iniciais", "Inep"],
     "TO-SAU-01": ["Leitos SUS de internação", "DATASUS (CNES)"],
+    "TO-SAU-03": ["Mortalidade infantil", "DATASUS (SIM e SINASC)"],
     "TO-GER-01": ["Prefeitos e governador eleitos", "TSE"],
   };
   const STATUS_FONTE = {
