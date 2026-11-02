@@ -136,15 +136,9 @@
       "unidade": "por mil nascidos vivos",
       "casas": 1,
       "sentido": "menor_melhor",
-      "fonte": "SIM/SINASC",
-      "orgao": "DATASUS (SIM e SINASC)",
-      "descricao": "Óbitos de menores de 1 ano por mil nascidos vivos.",
-      "link": {
-       "id_fonte": "TO-SAU-03",
-       "url": "https://tabnet.datasus.gov.br/cgi/deftohtm.exe?sim/cnv/inf10uf.def",
-       "tipo": "implantacao",
-       "tarefa": 44
-      }
+      "fonte": "SIM/SINASC (cálculo direto, sem correção de sub-registro)",
+      "varUni": "‰",
+      "ind": "mortalidade_infantil"
      }
     ]
    },
@@ -300,15 +294,9 @@
       "unidade": "por mil nascidos vivos",
       "casas": 1,
       "sentido": "menor_melhor",
-      "fonte": "SIM/SINASC",
-      "orgao": "DATASUS (SIM e SINASC)",
-      "descricao": "Óbitos de menores de 1 ano por mil nascidos vivos.",
-      "link": {
-       "id_fonte": "TO-SAU-03",
-       "url": "https://tabnet.datasus.gov.br/cgi/deftohtm.exe?sim/cnv/inf10uf.def",
-       "tipo": "implantacao",
-       "tarefa": 44
-      }
+      "fonte": "SIM/SINASC (cálculo direto, sem correção de sub-registro)",
+      "varUni": "‰",
+      "ind": "mortalidade_infantil"
      }
     ]
    },
@@ -656,15 +644,9 @@
      "unidade": "por mil nascidos vivos",
      "casas": 1,
      "sentido": "menor_melhor",
-     "fonte": "SIM/SINASC",
-     "orgao": "DATASUS (SIM e SINASC)",
-     "descricao": "Óbitos de menores de 1 ano por mil nascidos vivos.",
-     "link": {
-      "id_fonte": "TO-SAU-03",
-      "url": "https://tabnet.datasus.gov.br/cgi/deftohtm.exe?sim/cnv/inf10uf.def",
-      "tipo": "implantacao",
-      "tarefa": 44
-     }
+     "fonte": "SIM/SINASC (cálculo direto, sem correção de sub-registro)",
+     "varUni": "‰",
+     "ind": "mortalidade_infantil"
     }
    ]
   },
