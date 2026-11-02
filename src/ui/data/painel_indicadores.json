@@ -124,18 +124,11 @@
     "itens": [
      {
       "id": "leitos_sus",
-      "titulo": "Leitos SUS",
+      "titulo": "Leitos SUS de internação",
       "unidade": "leitos",
       "sentido": "maior_melhor",
       "fonte": "CNES/DATASUS",
-      "orgao": "DATASUS (CNES)",
-      "descricao": "Leitos de internação do SUS em cada município.",
-      "link": {
-       "id_fonte": "TO-SAU-01",
-       "url": "https://cnes.datasus.gov.br/",
-       "tipo": "implantacao",
-       "tarefa": 40
-      }
+      "ind": "leitos_sus"
      },
      {
       "id": "mortalidade_infantil",
@@ -296,18 +289,11 @@
     "icone": "ph-heartbeat",
     "itens": [
      {
-      "titulo": "Leitos SUS",
+      "titulo": "Leitos SUS de internação",
       "unidade": "leitos",
       "sentido": "maior_melhor",
       "fonte": "CNES/DATASUS",
-      "orgao": "DATASUS (CNES)",
-      "descricao": "Leitos de internação do SUS em cada município.",
-      "link": {
-       "id_fonte": "TO-SAU-01",
-       "url": "https://cnes.datasus.gov.br/",
-       "tipo": "implantacao",
-       "tarefa": 40
-      }
+      "ind": "leitos_sus"
      },
      {
       "titulo": "Mortalidade infantil",
@@ -659,18 +645,11 @@
    },
    "itens": [
     {
-     "titulo": "Leitos (SIA/SIH/CNES)",
+     "titulo": "Leitos SUS de internação (CNES)",
      "unidade": "leitos",
      "sentido": "maior_melhor",
      "fonte": "CNES/DATASUS",
-     "orgao": "DATASUS (CNES)",
-     "descricao": "Leitos de internação do SUS em cada município.",
-     "link": {
-      "id_fonte": "TO-SAU-01",
-      "url": "https://cnes.datasus.gov.br/",
-      "tipo": "implantacao",
-      "tarefa": 40
-     }
+     "ind": "leitos_sus"
     },
     {
      "titulo": "Mortalidade infantil",
