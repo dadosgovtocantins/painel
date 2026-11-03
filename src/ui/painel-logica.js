@@ -175,7 +175,8 @@
     "TO-EDU-04": ["Taxa de aprovação, anos iniciais", "Inep"],
     "TO-SAU-01": ["Leitos SUS de internação", "DATASUS (CNES)"],
     "TO-SAU-03": ["Mortalidade infantil", "DATASUS (SIM e SINASC)"],
-    "TO-INF-01": ["Obras federais em andamento", "DNIT"],
+    "TO-EDU-06": ["Repasses do FNDE", "CGU (Portal da Transparência)"],
+    "TO-EMP-01": ["Empresas e organizações atuantes", "IBGE (CEMPRE)"],
     "TO-GER-01": ["Prefeitos e governador eleitos", "TSE"],
   };
   const STATUS_FONTE = {
