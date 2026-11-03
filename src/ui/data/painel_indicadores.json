@@ -161,12 +161,18 @@
      {
       "id": "repasses_fnde",
       "titulo": "Repasses do FNDE",
-      "fonte": "CGU (Portal da Transparência)",
+      "unidade": "R$ mi",
+      "casas": 1,
+      "sentido": "neutro",
+      "fonte": "FNDE",
       "orgao": "FNDE",
-      "descricao": "Repasses do FNDE acumulados no ano: prefeitura e fundo municipal de educação (não inclui caixas escolares).",
-      "ind": "repasses_fnde",
-      "moeda": true,
-      "sentido": "neutro"
+      "descricao": "Repasses do FNDE (PNAE, PNATE, FUNDEB) a cada município.",
+      "link": {
+       "id_fonte": "TO-EDU-06",
+       "url": "https://www.gov.br/fnde/pt-br/acesso-a-informacao/convenios-e-transferencias",
+       "tipo": "implantacao",
+       "tarefa": 45
+      }
      }
     ]
    }
@@ -311,12 +317,18 @@
      },
      {
       "titulo": "Repasses do FNDE",
-      "fonte": "CGU (Portal da Transparência)",
+      "unidade": "R$ mi",
+      "casas": 1,
+      "sentido": "neutro",
+      "fonte": "FNDE",
       "orgao": "FNDE",
-      "descricao": "Repasses do FNDE acumulados no ano: municípios (prefeituras e fundos municipais de educação) e governo estadual, sem caixas escolares.",
-      "ind": "repasses_fnde",
-      "moeda": true,
-      "sentido": "neutro"
+      "descricao": "Repasses do FNDE (PNAE, PNATE, FUNDEB) a cada município.",
+      "link": {
+       "id_fonte": "TO-EDU-06",
+       "url": "https://www.gov.br/fnde/pt-br/acesso-a-informacao/convenios-e-transferencias",
+       "tipo": "implantacao",
+       "tarefa": 45
+      }
      }
     ]
    },
@@ -333,7 +345,7 @@
       "descricao": "Registros agregados de ocorrências de segurança pública.",
       "link": {
        "id_fonte": "TO-SEG-01",
-       "url": "https://www.to.gov.br/ssp",
+       "url": "https://www.to.gov.br/ssp/estatisticas/37s2impwz72k",
        "tipo": "externa"
       }
      },
@@ -345,21 +357,18 @@
       "descricao": "Fluxo e oferta turística do Estado.",
       "link": {
        "id_fonte": "TO-TUR-01",
-       "url": "https://observatorio.turismo.to.gov.br/",
+       "url": "https://observatorio.turismo.to.gov.br/indicadores",
        "tipo": "externa"
       }
      },
      {
-      "titulo": "Rodovias e obras estaduais",
-      "unidade": "km",
-      "fonte": "AGETO",
-      "orgao": "AGETO-TO",
-      "descricao": "Rodovias e obras estaduais.",
-      "link": {
-       "id_fonte": "TO-INF-01",
-       "url": "https://www.to.gov.br/ageto",
-       "tipo": "externa"
-      }
+      "titulo": "Obras federais em andamento",
+      "unidade": "obras",
+      "fonte": "DNIT",
+      "orgao": "DNIT",
+      "descricao": "Obras federais em andamento no território; não inclui a malha estadual.",
+      "ind": "obras_federais_andamento",
+      "sentido": "neutro"
      },
      {
       "titulo": "Ouvidoria e controle interno",
@@ -369,7 +378,7 @@
       "descricao": "Ouvidoria e controle interno: relatórios de gestão.",
       "link": {
        "id_fonte": "TO-CGE-01",
-       "url": "https://www.to.gov.br/cge",
+       "url": "https://www.to.gov.br/cge/painel-de-monitoramento-da-ouvidoria/52jwsq37p59r",
        "tipo": "externa"
       }
      },
@@ -510,17 +519,22 @@
     "nivel": "Avançado",
     "pct": 100,
     "fontes": "1 fonte aberta · 0 apenas-link (grau A)",
-    "desc": "Repasses financeiros do FNDE aos municípios e ao governo estadual, em dados abertos."
+    "desc": "Repasses financeiros da educação (PNAE, PNATE, FUNDEB) em dados abertos."
    },
    "itens": [
     {
-     "titulo": "Repasses do FNDE",
-     "fonte": "CGU (Portal da Transparência)",
+     "titulo": "Repasses FNDE (PNAE, PNATE, FUNDEB)",
+     "unidade": "R$ mil",
+     "sentido": "neutro",
+     "fonte": "FNDE",
      "orgao": "FNDE",
-     "descricao": "Repasses do FNDE acumulados no ano ao estado e aos municípios.",
-     "ind": "repasses_fnde",
-     "moeda": true,
-     "sentido": "neutro"
+     "descricao": "Repasses do FNDE (PNAE, PNATE, FUNDEB) a cada município.",
+     "link": {
+      "id_fonte": "TO-EDU-06",
+      "url": "https://www.gov.br/fnde/pt-br/acesso-a-informacao/convenios-e-transferencias",
+      "tipo": "implantacao",
+      "tarefa": 45
+     }
     }
    ]
   },
