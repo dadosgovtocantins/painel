@@ -161,18 +161,12 @@
      {
       "id": "repasses_fnde",
       "titulo": "Repasses do FNDE",
-      "unidade": "R$ mi",
-      "casas": 1,
-      "sentido": "neutro",
-      "fonte": "FNDE",
+      "fonte": "CGU (Portal da Transparência)",
       "orgao": "FNDE",
-      "descricao": "Repasses do FNDE (PNAE, PNATE, FUNDEB) a cada município.",
-      "link": {
-       "id_fonte": "TO-EDU-06",
-       "url": "https://www.gov.br/fnde/pt-br/acesso-a-informacao/convenios-e-transferencias",
-       "tipo": "implantacao",
-       "tarefa": 45
-      }
+      "descricao": "Repasses do FNDE acumulados no ano: prefeitura e fundo municipal de educação (não inclui caixas escolares).",
+      "ind": "repasses_fnde",
+      "moeda": true,
+      "sentido": "neutro"
      }
     ]
    }
@@ -317,18 +311,12 @@
      },
      {
       "titulo": "Repasses do FNDE",
-      "unidade": "R$ mi",
-      "casas": 1,
-      "sentido": "neutro",
-      "fonte": "FNDE",
+      "fonte": "CGU (Portal da Transparência)",
       "orgao": "FNDE",
-      "descricao": "Repasses do FNDE (PNAE, PNATE, FUNDEB) a cada município.",
-      "link": {
-       "id_fonte": "TO-EDU-06",
-       "url": "https://www.gov.br/fnde/pt-br/acesso-a-informacao/convenios-e-transferencias",
-       "tipo": "implantacao",
-       "tarefa": 45
-      }
+      "descricao": "Repasses do FNDE acumulados no ano: municípios (prefeituras e fundos municipais de educação) e governo estadual, sem caixas escolares.",
+      "ind": "repasses_fnde",
+      "moeda": true,
+      "sentido": "neutro"
      }
     ]
    },
@@ -522,22 +510,17 @@
     "nivel": "Avançado",
     "pct": 100,
     "fontes": "1 fonte aberta · 0 apenas-link (grau A)",
-    "desc": "Repasses financeiros da educação (PNAE, PNATE, FUNDEB) em dados abertos."
+    "desc": "Repasses financeiros do FNDE aos municípios e ao governo estadual, em dados abertos."
    },
    "itens": [
     {
-     "titulo": "Repasses FNDE (PNAE, PNATE, FUNDEB)",
-     "unidade": "R$ mil",
-     "sentido": "neutro",
-     "fonte": "FNDE",
+     "titulo": "Repasses do FNDE",
+     "fonte": "CGU (Portal da Transparência)",
      "orgao": "FNDE",
-     "descricao": "Repasses do FNDE (PNAE, PNATE, FUNDEB) a cada município.",
-     "link": {
-      "id_fonte": "TO-EDU-06",
-      "url": "https://www.gov.br/fnde/pt-br/acesso-a-informacao/convenios-e-transferencias",
-      "tipo": "implantacao",
-      "tarefa": 45
-     }
+     "descricao": "Repasses do FNDE acumulados no ano ao estado e aos municípios.",
+     "ind": "repasses_fnde",
+     "moeda": true,
+     "sentido": "neutro"
     }
    ]
   },
