@@ -336,7 +336,7 @@
       "descricao": "Registros agregados de ocorrências de segurança pública.",
       "link": {
        "id_fonte": "TO-SEG-01",
-       "url": "https://www.to.gov.br/ssp",
+       "url": "https://www.to.gov.br/ssp/estatisticas/37s2impwz72k",
        "tipo": "externa"
       }
      },
@@ -348,21 +348,18 @@
       "descricao": "Fluxo e oferta turística do Estado.",
       "link": {
        "id_fonte": "TO-TUR-01",
-       "url": "https://observatorio.turismo.to.gov.br/",
+       "url": "https://observatorio.turismo.to.gov.br/indicadores",
        "tipo": "externa"
       }
      },
      {
-      "titulo": "Rodovias e obras estaduais",
-      "unidade": "km",
-      "fonte": "AGETO",
-      "orgao": "AGETO-TO",
-      "descricao": "Rodovias e obras estaduais.",
-      "link": {
-       "id_fonte": "TO-INF-01",
-       "url": "https://www.to.gov.br/ageto",
-       "tipo": "externa"
-      }
+      "titulo": "Obras federais em andamento",
+      "unidade": "obras",
+      "fonte": "DNIT",
+      "orgao": "DNIT",
+      "descricao": "Obras federais em andamento no território; não inclui a malha estadual.",
+      "ind": "obras_federais_andamento",
+      "sentido": "neutro"
      },
      {
       "titulo": "Ouvidoria e controle interno",
@@ -372,7 +369,7 @@
       "descricao": "Ouvidoria e controle interno: relatórios de gestão.",
       "link": {
        "id_fonte": "TO-CGE-01",
-       "url": "https://www.to.gov.br/cge",
+       "url": "https://www.to.gov.br/cge/painel-de-monitoramento-da-ouvidoria/52jwsq37p59r",
        "tipo": "externa"
       }
      },

@@ -177,6 +177,7 @@
     "TO-SAU-03": ["Mortalidade infantil", "DATASUS (SIM e SINASC)"],
     "TO-EDU-06": ["Repasses do FNDE", "CGU (Portal da Transparência)"],
     "TO-EMP-01": ["Empresas e organizações atuantes", "IBGE (CEMPRE)"],
+    "TO-INF-01": ["Obras federais em andamento", "DNIT"],
     "TO-GER-01": ["Prefeitos e governador eleitos", "TSE"],
   };
   const STATUS_FONTE = {
