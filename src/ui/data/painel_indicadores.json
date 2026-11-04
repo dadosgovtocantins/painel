@@ -16,18 +16,14 @@
       "moeda": true
      },
      {
-      "id": "empresas_ativas",
-      "titulo": "Empresas ativas",
-      "unidade": "empresas",
+      "id": "empresas_atuantes",
+      "titulo": "Empresas e organizações atuantes (CEMPRE)",
+      "unidade": "unidades",
       "sentido": "maior_melhor",
-      "fonte": "Mapa de Empresas",
-      "orgao": "MDIC (Mapa de Empresas)",
-      "descricao": "Empresas abertas, fechadas e em atividade, por município.",
-      "link": {
-       "id_fonte": "TO-EMP-01",
-       "url": "https://www.gov.br/empresas-e-negocios/pt-br/mapa-de-empresas/painel-mapa-de-empresas",
-       "tipo": "externa"
-      }
+      "fonte": "IBGE (CEMPRE)",
+      "orgao": "IBGE (CEMPRE)",
+      "descricao": "Atuantes no ano, inclusive a administração pública. Não é a contagem de ativas do Mapa de Empresas.",
+      "ind": "empresas_atuantes"
      },
      {
       "id": "saldo_caged",
@@ -216,6 +212,13 @@
       "fonte": "IBGE/PNAD Contínua",
       "varUni": "p.p.",
       "ind": "taxa_desocupacao"
+     },
+     {
+      "titulo": "Empresas e organizações atuantes (CEMPRE)",
+      "unidade": "unidades",
+      "sentido": "maior_melhor",
+      "fonte": "IBGE (CEMPRE)",
+      "ind": "empresas_atuantes"
      }
     ]
    },
@@ -590,17 +593,13 @@
    },
    "itens": [
     {
-     "titulo": "Empresas abertas e fechadas",
-     "unidade": "empresas",
+     "titulo": "Empresas e organizações atuantes (CEMPRE)",
+     "unidade": "unidades",
      "sentido": "maior_melhor",
-     "fonte": "Mapa de Empresas",
-     "orgao": "MDIC (Mapa de Empresas)",
-     "descricao": "Empresas abertas, fechadas e em atividade, por município.",
-     "link": {
-      "id_fonte": "TO-EMP-01",
-      "url": "https://www.gov.br/empresas-e-negocios/pt-br/mapa-de-empresas/painel-mapa-de-empresas",
-      "tipo": "externa"
-     }
+     "fonte": "IBGE (CEMPRE)",
+     "orgao": "IBGE (CEMPRE)",
+     "descricao": "Atuantes no ano, inclusive a administração pública. Não é a contagem de ativas do Mapa de Empresas.",
+     "ind": "empresas_atuantes"
     }
    ]
   },
