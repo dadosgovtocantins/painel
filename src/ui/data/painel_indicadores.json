@@ -155,6 +155,28 @@
       "ind": "ideb_anos_iniciais"
      },
      {
+      "id": "saeb_matematica",
+      "titulo": "Saeb, Matemática (5º ano, rede pública)",
+      "unidade": "pontos",
+      "casas": 1,
+      "sentido": "maior_melhor",
+      "fonte": "INEP (rede pública)",
+      "varUni": "pt",
+      "passo": 2,
+      "ind": "saeb_matematica"
+     },
+     {
+      "id": "saeb_portugues",
+      "titulo": "Saeb, Língua Portuguesa (5º ano, rede pública)",
+      "unidade": "pontos",
+      "casas": 1,
+      "sentido": "maior_melhor",
+      "fonte": "INEP (rede pública)",
+      "varUni": "pt",
+      "passo": 2,
+      "ind": "saeb_portugues"
+     },
+     {
       "id": "repasses_fnde",
       "titulo": "Repasses do FNDE",
       "fonte": "CGU (Portal da Transparência)",
@@ -313,6 +335,26 @@
       "ind": "ideb_anos_iniciais"
      },
      {
+      "titulo": "Saeb, Matemática (5º ano, rede pública)",
+      "unidade": "pontos",
+      "casas": 1,
+      "sentido": "maior_melhor",
+      "fonte": "INEP (rede pública)",
+      "varUni": "pt",
+      "passo": 2,
+      "ind": "saeb_matematica"
+     },
+     {
+      "titulo": "Saeb, Língua Portuguesa (5º ano, rede pública)",
+      "unidade": "pontos",
+      "casas": 1,
+      "sentido": "maior_melhor",
+      "fonte": "INEP (rede pública)",
+      "varUni": "pt",
+      "passo": 2,
+      "ind": "saeb_portugues"
+     },
+     {
       "titulo": "Repasses do FNDE",
       "fonte": "CGU (Portal da Transparência)",
       "orgao": "FNDE",
@@ -455,7 +497,7 @@
    "maturidade": {
     "nivel": "Avançado",
     "pct": 100,
-    "fontes": "4 fontes abertas · 0 apenas-link (grau A)",
+    "fontes": "5 fontes abertas · 0 apenas-link (grau A)",
     "desc": "Indicadores educacionais oficiais em microdados e APIs do Ministério da Educação."
    },
    "itens": [
@@ -470,19 +512,24 @@
      "ind": "ideb_anos_iniciais"
     },
     {
-     "titulo": "SAEB: proficiência em LP e Matemática",
+     "titulo": "Saeb, Matemática (5º ano, rede pública)",
      "unidade": "pontos",
      "casas": 1,
      "sentido": "maior_melhor",
-     "fonte": "INEP",
+     "fonte": "INEP (rede pública)",
+     "varUni": "pt",
      "passo": 2,
-     "orgao": "INEP (Saeb)",
-     "descricao": "Proficiência em Língua Portuguesa e Matemática.",
-     "link": {
-      "id_fonte": "TO-EDU-02",
-      "url": "https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/saeb",
-      "tipo": "externa"
-     }
+     "ind": "saeb_matematica"
+    },
+    {
+     "titulo": "Saeb, Língua Portuguesa (5º ano, rede pública)",
+     "unidade": "pontos",
+     "casas": 1,
+     "sentido": "maior_melhor",
+     "fonte": "INEP (rede pública)",
+     "varUni": "pt",
+     "passo": 2,
+     "ind": "saeb_portugues"
     },
     {
      "titulo": "Matrículas na educação básica (todas as redes)",
@@ -701,20 +748,15 @@
     "nivel": "Inexistente",
     "pct": 0,
     "fontes": "0 fontes abertas · 3 apenas-link (grau D)",
-    "desc": "Portal da Transparência (Vaadin) sem API pública; a despesa paga vem do CSV exportado da consulta por função (task 47) e as demais consultas seguem como link."
+    "desc": "Portal da Transparência (Vaadin) sem API pública; a receita arrecadada (task 52b) e a despesa paga (task 47) vêm do CSV exportado e os atos oficiais seguem como link."
    },
    "itens": [
     {
-     "titulo": "Receitas públicas estaduais",
-     "unidade": "R$",
+     "titulo": "Receita arrecadada no ano",
      "fonte": "Portal da Transparência TO",
-     "orgao": "SEFAZ-TO (Portal da Transparência)",
-     "descricao": "Receitas arrecadadas pelo Estado, por fonte e categoria.",
-     "link": {
-      "id_fonte": "TO-FIS-01",
-      "url": "https://transparencia.to.gov.br/PortalTransparencia/#!receitas",
-      "tipo": "externa"
-     }
+     "ind": "receita_arrecadada_ano",
+     "moeda": true,
+     "sentido": "maior_melhor"
     },
     {
      "titulo": "Despesa paga no ano",
@@ -792,10 +834,10 @@
    "nome": "Tribunal de Contas do Estado do Tocantins",
    "esfera": "Estadual",
    "maturidade": {
-    "nivel": "Inexistente",
-    "pct": 0,
-    "fontes": "0 fontes abertas · 2 apenas-link (grau D)",
-    "desc": "Portal do Cidadão sem API pública; o painel só aponta para as consultas (prestação de contas e alertas da LRF dos municípios)."
+    "nivel": "Intermediário",
+    "pct": 50,
+    "fontes": "1 fonte aberta · 1 apenas-link",
+    "desc": "Alertas da LRF obtidos do RGF entregue pelos municípios ao Tesouro Nacional (STN/SICONFI); prestação de contas municipais segue como link para o Portal do Cidadão."
    },
    "itens": [
     {
@@ -812,17 +854,11 @@
      }
     },
     {
-     "titulo": "Alertas da LRF monitorados",
-     "unidade": "alertas",
-     "sentido": "neutro",
-     "fonte": "TCE-TO (raspagem)",
-     "orgao": "TCE-TO (Portal do Cidadão)",
-     "descricao": "Indicadores da LRF dos municípios.",
-     "link": {
-      "id_fonte": "TO-CTL-02",
-      "url": "https://portaldocidadao.tceto.tc.br/",
-      "tipo": "externa"
-     }
+     "titulo": "Municípios acima do limite de alerta (pessoal, LRF)",
+     "unidade": "municípios",
+     "sentido": "menor_melhor",
+     "fonte": "STN/SICONFI (RGF)",
+     "ind": "municipios_acima_alerta_lrf"
     }
    ]
   },
@@ -860,22 +896,15 @@
     "nivel": "Inexistente",
     "pct": 0,
     "fontes": "0 fontes abertas · 2 apenas-link (grau D)",
-    "desc": "Consultas no Portal da Transparência (SIAFE) e no site da CGE, sem API pública; o painel só aponta para elas."
+    "desc": "Portal da Transparência (Vaadin) sem API pública; a despesa empenhada vem do CSV exportado da consulta por função (task 52b) e a ouvidoria segue como link."
    },
    "itens": [
     {
-     "titulo": "Execução orçamentária e financeira (SIAFE)",
-     "unidade": "R$ bi",
-     "casas": 1,
-     "sentido": "neutro",
-     "fonte": "CGE-TO (raspagem)",
-     "orgao": "CGE-TO (Portal da Transparência)",
-     "descricao": "Execução orçamentária e financeira do Estado.",
-     "link": {
-      "id_fonte": "TO-FIS-03",
-      "url": "https://transparencia.to.gov.br/PortalTransparencia/#!despesas",
-      "tipo": "externa"
-     }
+     "titulo": "Despesa empenhada no ano",
+     "fonte": "Portal da Transparência TO (todos os Poderes)",
+     "ind": "despesa_empenhada_ano",
+     "moeda": true,
+     "sentido": "neutro"
     },
     {
      "titulo": "Relatórios de gestão e ouvidoria",
@@ -886,7 +915,7 @@
      "descricao": "Ouvidoria e controle interno: relatórios de gestão.",
      "link": {
       "id_fonte": "TO-CGE-01",
-      "url": "https://www.to.gov.br/cge",
+      "url": "https://www.to.gov.br/cge/painel-de-monitoramento-da-ouvidoria/52jwsq37p59r",
       "tipo": "externa"
      }
     }

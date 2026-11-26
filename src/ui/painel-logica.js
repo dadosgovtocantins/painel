@@ -169,8 +169,12 @@
     "TO-AGR-02": ["Pecuária municipal (rebanho bovino)", "IBGE"],
     "TO-TRA-01": ["Taxa de desocupação", "IBGE"],
     "TO-FIS-04": ["Receita corrente líquida", "Tesouro Nacional"],
+    "TO-FIS-01": ["Receita arrecadada do Estado", "Portal da Transparência TO"],
     "TO-FIS-02": ["Despesa paga do Estado", "Portal da Transparência TO"],
+    "TO-FIS-03": ["Despesa empenhada do Estado", "Portal da Transparência TO"],
     "TO-EDU-01": ["IDEB, anos iniciais (rede pública)", "Inep"],
+    "TO-EDU-02": ["Saeb, Matemática (5º ano)", "Inep"],
+    "TO-EDU-07": ["Saeb, Língua Portuguesa (5º ano)", "Inep"],
     "TO-EDU-03": ["Matrículas na educação básica", "Inep"],
     "TO-EDU-04": ["Taxa de aprovação, anos iniciais", "Inep"],
     "TO-SAU-01": ["Leitos SUS de internação", "DATASUS (CNES)"],
@@ -178,6 +182,7 @@
     "TO-EDU-06": ["Repasses do FNDE", "CGU (Portal da Transparência)"],
     "TO-EMP-01": ["Empresas e organizações atuantes", "IBGE (CEMPRE)"],
     "TO-INF-01": ["Obras federais em andamento", "DNIT"],
+    "TO-CTL-02": ["Alertas da LRF nos municípios", "STN/SICONFI (RGF)"],
     "TO-GER-01": ["Prefeitos e governador eleitos", "TSE"],
   };
   const STATUS_FONTE = {

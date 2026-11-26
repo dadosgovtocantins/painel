@@ -8,7 +8,7 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'">
   <title>Painel TO em Dados</title>
   <!-- ?v= = início do SHA-256 do arquivo (evita .js/.css velho no cache); tests/ui/test_tela_municipio.py confere (painel-logica.js, painel.css e support.js) -->
-  <script src="./src/ui/painel-logica.js?v=77c86ce1"></script>
+  <script src="./src/ui/painel-logica.js?v=a5b4885a"></script>
   <script src="./support.js?v=a1d293c3"></script>
 </head>
 <body>
@@ -214,6 +214,7 @@ class Component extends DCLogic {
       tema: this.temaSalvo() || (props.tema === "claro" ? "claro" : "escuro"),
       formas: null, mapaErro: "", dados: null, dadosErro: "", dadosReais: null, dadosReaisErro: "",
       bandeiraUrl: "", bandeiraOk: false,
+      fotoUrl: "", fotoOk: false,
     };
     for (const f of ["aoClicar", "aoTeclar", "aoAba", "aoTeclarAba", "aoMudarMunicipio", "aoMudarOrgao", "aoTema", "aoCategoria"]) this[f] = this[f].bind(this);
   }
@@ -240,6 +241,7 @@ class Component extends DCLogic {
 
   componentDidMount() {
     this.checarBandeira();
+    this.checarFoto();
     this.carregar("./tocantins_municipios_regioes.geojson", (g) => !!g && Array.isArray(g.features),
       (geo) => ({ formas: PainelLogica.projetar(geo, Component.CENSO_2022) }),
       (msg) => ({ formas: [], mapaErro: "Não foi possível carregar o mapa (" + msg + ")." }));
@@ -274,6 +276,7 @@ class Component extends DCLogic {
     if (p.visao !== v.visao) { v.visao = p.visao; if (this.abaValida(p.visao)) this.setState({ aba: p.visao, tela: 0 }); }
     if (p.tema !== v.tema) { v.tema = p.tema; if (p.tema === "claro" || p.tema === "escuro") this.setState({ tema: p.tema }); }
     this.checarBandeira();
+    this.checarFoto();
   }
 
   abaValida(id) { return Component.ABAS.some((a) => a.id === id) ? id : null; }
@@ -291,7 +294,8 @@ class Component extends DCLogic {
     const [nome, populacao] = Component.CENSO_2022[cod];
     const slug = this.normalizar(nome).replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
     return {
-      nome, populacao, foto: "",
+      nome, populacao,
+      foto: "./prefeitos/" + cod + ".jpg",
       cargo: "Prefeito(a) de " + nome,
       bandeira: "./bandeiras/" + slug + "-to.webp",
       ...(Component.MUNICIPIOS[cod] || {}),
@@ -304,6 +308,16 @@ class Component extends DCLogic {
     this.setState({ bandeiraUrl: url, bandeiraOk: false });
     const img = new Image();
     img.onload = () => { if (this.state.bandeiraUrl === url) this.setState({ bandeiraOk: true }); };
+    img.src = url;
+  }
+
+  checarFoto() {
+    const url = this.state.aba === "estado" ? Component.ESTADO.foto : this.dadosMunicipio(this.state.cod).foto;
+    if (url === this.state.fotoUrl) return;
+    this.setState({ fotoUrl: url, fotoOk: false });
+    if (!url) return;
+    const img = new Image();
+    img.onload = () => { if (this.state.fotoUrl === url) this.setState({ fotoOk: true }); };
     img.src = url;
   }
 
@@ -416,6 +430,7 @@ class Component extends DCLogic {
     const r = noMunicipio ? { lugar: m.nome, funcao: "prefeito(a)", foto: m.foto, bandeira: m.bandeira }
       : { lugar: E.nome, funcao: "governador(a)", foto: E.foto, bandeira: E.bandeira };
     const temBandeira = this.state.bandeiraOk && this.state.bandeiraUrl === r.bandeira;
+    const temFoto = !!r.foto && this.state.fotoOk && this.state.fotoUrl === r.foto;
     return {
       tema: this.state.tema,
       temas: Component.TEMAS.map((t) => ({ ...t, ativo: t.id === this.state.tema })),
@@ -431,7 +446,7 @@ class Component extends DCLogic {
       opcoesMunicipio: this.opcoesMunicipio,
       opcoesOrgao: dados ? dados.orgaos.map((o) => ({ sigla: o.sigla, rotulo: o.sigla + " · " + o.nome })) : [],
       temRetratos: aba !== "orgao",
-      ret: { ...r, pessoa: cab.subtitulo, temFoto: !!r.foto, semFoto: !r.foto, temBandeira, semBandeira: !temBandeira },
+      ret: { ...r, pessoa: cab.subtitulo, temFoto, semFoto: !temFoto, temBandeira, semBandeira: !temBandeira },
       municipios: formas.map((f) => ({
         ...f, nome: Component.CENSO_2022[f.cod][0],
         sel: noMunicipio && f.cod === cod,
