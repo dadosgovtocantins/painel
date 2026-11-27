@@ -11,11 +11,20 @@
 
   // Série [[rótulo, valor], ...] -> dado do cartão (último ponto, anterior e série na unidade de exibição).
   // Pontos sem número válido são ignorados (RF-55: ausente nunca vira zero); sem nenhum ponto válido, devolve null.
+  // Com `ind.texto` (ex.: CAPAG, task 42), aceita conceito textual (sem variação nem mini-gráfico).
   function dadoDe(ind, serie) {
+    if (ind.texto) {
+      const pts = serie.filter((p) => Array.isArray(p) && typeof p[1] === "string" && p[1].trim().length > 0);
+      if (!pts.length) return null;
+      const ultimo = pts[pts.length - 1];
+      const detalhe = typeof ultimo[2] === "string" ? ultimo[2].slice(0, 80) : "";
+      return { v: ultimo[1].trim(), per: ultimo[0], ant: null, perAnt: null, serie: [], unidade: ind.unidade || "", detalhe };
+    }
     const pts = serie.filter((p) => Array.isArray(p) && typeof p[1] === "number" && Number.isFinite(p[1]));
     if (!pts.length) return null;
     const [per, v] = pts[pts.length - 1], ant = pts[pts.length - 2];
-    const { k, unidade } = ind.moeda ? escalaMoeda(v) : { k: 1, unidade: ind.unidade || "" };
+    const escala = typeof ind.escala === "number" && Number.isFinite(ind.escala) ? ind.escala : 1;
+    const { k, unidade } = ind.moeda ? escalaMoeda(v) : { k: escala, unidade: ind.unidade || "" };
     // Terceiro elemento do ponto (task 44): texto curto ao lado do valor, ex.: "56 óbitos em 4.713 nascidos".
     const ultimo = pts[pts.length - 1], detalhe = typeof ultimo[2] === "string" ? ultimo[2].slice(0, 80) : "";
     return { v: v * k, per, ant: ant ? ant[1] * k : null, perAnt: ant ? ant[0] : null, serie: pts.map((p) => p[1] * k), unidade, detalhe };
@@ -183,6 +192,10 @@
     "TO-EMP-01": ["Empresas e organizações atuantes", "IBGE (CEMPRE)"],
     "TO-INF-01": ["Obras federais em andamento", "DNIT"],
     "TO-CTL-02": ["Alertas da LRF nos municípios", "STN/SICONFI (RGF)"],
+    "TO-ECO-04": ["Exportações municipais", "MDIC (Comex Stat)"],
+    "TO-FIS-05": ["Despesa com pessoal (LRF)", "STN/SICONFI (RGF)"],
+    "TO-FIS-06": ["Capacidade de pagamento (CAPAG)", "Tesouro Nacional"],
+    "TO-TRA-02": ["Saldo de empregos formais", "MTE (Novo CAGED)"],
     "TO-GER-01": ["Prefeitos e governador eleitos", "TSE"],
   };
   const STATUS_FONTE = {

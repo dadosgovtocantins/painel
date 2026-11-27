@@ -32,30 +32,17 @@
       "sentido": "maior_melhor",
       "fonte": "Novo CAGED",
       "varUni": "vagas",
-      "orgao": "MTE (Novo CAGED)",
-      "descricao": "Saldo de empregos formais: admissões menos desligamentos.",
-      "link": {
-       "id_fonte": "TO-TRA-02",
-       "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho",
-       "tipo": "implantacao",
-       "tarefa": 43
-      }
+      "ind": "saldo_emprego_caged"
      },
      {
       "id": "exportacoes",
       "titulo": "Exportações",
       "unidade": "US$ mi",
       "casas": 1,
+      "escala": 1e-6,
       "sentido": "maior_melhor",
-      "fonte": "Comex Stat",
-      "orgao": "MDIC (Comex Stat)",
-      "descricao": "Exportações de cada município, em dólares (valor FOB).",
-      "link": {
-       "id_fonte": "TO-ECO-04",
-       "url": "https://comexstat.mdic.gov.br/pt/municipio",
-       "tipo": "implantacao",
-       "tarefa": 39
-      }
+      "fonte": "Comex Stat (FOB)",
+      "ind": "exportacoes_comex"
      }
     ]
    },
@@ -100,16 +87,9 @@
       "titulo": "Capacidade de pagamento",
       "unidade": "CAPAG",
       "sentido": "maior_melhor",
-      "fonte": "Tesouro Nacional",
+      "fonte": "Tesouro Nacional (referência)",
       "texto": true,
-      "orgao": "Tesouro Nacional (CAPAG)",
-      "descricao": "Conceito de capacidade de pagamento de cada município.",
-      "link": {
-       "id_fonte": "TO-FIS-06",
-       "url": "https://www.tesourotransparente.gov.br/temas/estados-e-municipios/capacidade-de-pagamento-capag",
-       "tipo": "implantacao",
-       "tarefa": 42
-      }
+      "ind": "capag_capacidade_pagamento"
      }
     ]
    },
@@ -283,16 +263,9 @@
       "unidade": "% da RCL",
       "casas": 1,
       "sentido": "menor_melhor",
-      "fonte": "STN/SICONFI",
+      "fonte": "STN/SICONFI (RGF, Poder Executivo)",
       "varUni": "p.p.",
-      "orgao": "Tesouro Nacional (SICONFI)",
-      "descricao": "Despesa com pessoal como % da receita corrente líquida (LRF).",
-      "link": {
-       "id_fonte": "TO-FIS-05",
-       "url": "https://siconfi.tesouro.gov.br/siconfi/index.jsf",
-       "tipo": "implantacao",
-       "tarefa": 42
-      }
+      "ind": "despesa_pessoal_rcl"
      }
     ]
    },
@@ -584,17 +557,11 @@
    "itens": [
     {
      "titulo": "Saldo de empregos formais",
-     "unidade": "postos",
+     "unidade": "vagas",
      "sentido": "maior_melhor",
      "fonte": "Novo CAGED",
-     "orgao": "MTE (Novo CAGED)",
-     "descricao": "Saldo de empregos formais: admissões menos desligamentos.",
-     "link": {
-      "id_fonte": "TO-TRA-02",
-      "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho",
-      "tipo": "implantacao",
-      "tarefa": 43
-     }
+     "varUni": "vagas",
+     "ind": "saldo_emprego_caged"
     }
    ]
   },
@@ -611,17 +578,12 @@
    "itens": [
     {
      "titulo": "Exportações municipais",
-     "unidade": "US$ mil",
+     "unidade": "US$ mi",
+     "casas": 1,
+     "escala": 1e-6,
      "sentido": "maior_melhor",
-     "fonte": "Comex Stat",
-     "orgao": "MDIC (Comex Stat)",
-     "descricao": "Exportações de cada município, em dólares (valor FOB).",
-     "link": {
-      "id_fonte": "TO-ECO-04",
-      "url": "https://comexstat.mdic.gov.br/pt/municipio",
-      "tipo": "implantacao",
-      "tarefa": 39
-     }
+     "fonte": "Comex Stat (FOB) · total dos municípios do Tocantins",
+     "ind": "exportacoes_comex"
     }
    ]
   },
@@ -695,19 +657,13 @@
      "sentido": "maior_melhor"
     },
     {
-     "titulo": "Indicadores da LRF",
-     "unidade": "situação",
-     "sentido": "neutro",
-     "fonte": "STN/SICONFI",
-     "texto": true,
-     "orgao": "Tesouro Nacional (SICONFI)",
-     "descricao": "Despesa com pessoal como % da receita corrente líquida (LRF).",
-     "link": {
-      "id_fonte": "TO-FIS-05",
-      "url": "https://siconfi.tesouro.gov.br/siconfi/index.jsf",
-      "tipo": "implantacao",
-      "tarefa": 42
-     }
+     "titulo": "Despesa com pessoal (LRF)",
+     "unidade": "% da RCL",
+     "casas": 1,
+     "sentido": "menor_melhor",
+     "fonte": "STN/SICONFI (RGF, Poder Executivo)",
+     "varUni": "p.p.",
+     "ind": "despesa_pessoal_rcl"
     },
     {
      "titulo": "Execução orçamentária (DCA/RREO)",
@@ -727,16 +683,9 @@
      "titulo": "Capacidade de pagamento",
      "unidade": "CAPAG",
      "sentido": "maior_melhor",
-     "fonte": "Tesouro Nacional",
+     "fonte": "Tesouro Nacional (referência)",
      "texto": true,
-     "orgao": "Tesouro Nacional (CAPAG)",
-     "descricao": "Conceito de capacidade de pagamento de cada município.",
-     "link": {
-      "id_fonte": "TO-FIS-06",
-      "url": "https://www.tesourotransparente.gov.br/temas/estados-e-municipios/capacidade-de-pagamento-capag",
-      "tipo": "implantacao",
-      "tarefa": 42
-     }
+     "ind": "capag_capacidade_pagamento"
     }
    ]
   },
